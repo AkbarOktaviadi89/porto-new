@@ -661,8 +661,16 @@ p {
 }
 
 .projects-live {
-  grid-template-columns: repeat(2,1fr);
-  gap: 40px 28px;
+  grid-template-columns: repeat(6,1fr);
+  gap: 40px 26px;
+}
+
+.projects-live>* {
+  grid-column: span 2;
+}
+
+.projects-live>:nth-child(-n+2) {
+  grid-column: span 3;
 }
 
 .projects-subheading {
@@ -691,7 +699,7 @@ p {
   margin-top: 20px;
 }
 
-.creator-art,.queue-art,.inventory-art,.learning-art {
+.creator-art,.queue-art,.inventory-art,.learning-art,.shop-art {
   position: absolute;
   inset: 0;
   display: flex;
@@ -835,6 +843,81 @@ p {
 
 .inventory-bars i:nth-child(5) {
   background: #2f7a58;
+}
+
+.art-shop {
+  background: #e6f0f2;
+  color: #2f6470;
+}
+
+.shop-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px 12px 12px;
+  border: 1px solid #c6dbe0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 18px #22546012;
+  transform: rotate(-2deg);
+  transition: transform .5s;
+}
+
+.project-card:hover .shop-card {
+  transform: rotate(0);
+}
+
+.shop-thumb {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  background: #d8eaee;
+  color: #1f5f6d;
+}
+
+.shop-card>div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.shop-card strong {
+  font-size: 15px;
+  font-weight: 500;
+  color: #183f48;
+}
+
+.shop-card>div>span {
+  font: 11px var(--font-mono);
+  color: #3f6f7a;
+}
+
+.shop-add {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 6px;
+  border-radius: 7px;
+  background: #1f6f7f;
+  color: #fff;
+}
+
+.shop-pay {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.shop-pay>span {
+  padding: 5px 10px;
+  border: 1px solid #b9d2d8;
+  border-radius: 5px;
+  background: #f4f9fa;
+  font: 500 10px var(--font-mono);
+  color: #2f6470;
 }
 
 .art-learning {
@@ -2136,6 +2219,15 @@ footer>span {
   }
   .projects {
     gap: 18px;
+  }
+  .projects-live {
+    grid-template-columns: 1fr 1fr;
+  }
+  .projects-live>*,.projects-live>:nth-child(-n+2) {
+    grid-column: auto;
+  }
+  .projects-live>:last-child:nth-child(odd) {
+    grid-column: 1/-1;
   }
   .art-top {
     font-size: 10px;

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy } from "lucide-react";
+import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Scene from "./scene";
 import { BrandMark } from "@/components/brand-mark";
@@ -103,6 +103,21 @@ export default function Home() {
             <span className="is-done"><Check size={13}/>Certificate</span>
           </div>
           <div className="art-caption">LEARN BY BUILDING REAL PROJECTS</div>
+        </div> : p.type === "shop" ? <div className="shop-art">
+          <div className="shop-card">
+            <span className="shop-thumb" aria-hidden="true"><Fish size={30} strokeWidth={1.4}/></span>
+            <div>
+              <strong>Ikan Teri Premium</strong>
+              <span>Rp 30.000 / kg</span>
+            </div>
+            <span className="shop-add"><ShoppingCart size={15}/></span>
+          </div>
+          <div className="shop-pay">
+            <span>BCA</span>
+            <span>BNI</span>
+            <span>QRIS</span>
+          </div>
+          <div className="art-caption">CATALOG → CART → XENDIT CHECKOUT</div>
         </div> : p.type === "web" ? <div className="meta-art">
           <span className="meta-word">meta<span>tekno</span></span>
           <div className="meta-coordinate">THREE.JS EXPERIENCE / LARAVEL CMS</div>
