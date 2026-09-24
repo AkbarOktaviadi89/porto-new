@@ -5,11 +5,11 @@ import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, D
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Scene from "./scene";
 import { BrandMark } from "@/components/brand-mark";
-import { projects, experience, domains, certifications, competencies, education, courses } from "@/lib/portfolio-data";
+import { projects, experience, domains, certifications, competencies, education, courses, awards } from "@/lib/portfolio-data";
 export default function Home() {
     const [project, setProject] = useState<number | null>(null);
     const [showAllExperience, setShowAllExperience] = useState(false);
-    const [certificate, setCertificate] = useState<(typeof competencies)[number] | null>(null);
+    const [certificate, setCertificate] = useState<{ title: string; meta: string; image: string; width: number; height: number; alt: string } | null>(null);
     const [menu, setMenu] = useState(false);
     const [paused, setPaused] = useState(false);
     const [mode, setMode] = useState(0);
@@ -410,7 +410,7 @@ export default function Home() {
             <a href="https://www.linkedin.com/posts/akbar-oktaviadi_happy-to-be-able-to-obtain-a-competency-certificate-activity-7103346463262314496-UM3P" target="_blank" rel="noopener noreferrer">View LinkedIn post <ArrowUpRight size={15}/></a>
           </div>
           <div className="competency-grid">
-            {competencies.map(c => <button key={c.image} className="competency-card" onClick={() => setCertificate(c)}>
+            {competencies.map(c => <button key={c.image} className="competency-card" onClick={() => setCertificate({ title: c.title, meta: `Universitas Teknokrat Indonesia · ${c.date}`, image: c.image, width: 800, height: 565, alt: c.alt })}>
               <div className="competency-preview">
                 <img src={c.image} alt={c.alt} width="800" height="565" loading="lazy"/>
               </div>
@@ -423,19 +423,31 @@ export default function Home() {
             </button>)}
           </div>
         </div>
-        <div className="recognitions">
-          <span>RECOGNITION</span>
-          <div>
-            <Award size={22} strokeWidth={1.5}/>
-            <h3>Work of Innovation in Metaverse Development</h3>
-            <p>Universitas Teknokrat Indonesia · March 2024</p>
-            <a className="credential-link" href="https://www.linkedin.com/posts/akbar-oktaviadi_thrilled-to-receive-the-work-of-innovation-activity-7184038223864631297-MGN9" target="_blank" rel="noopener noreferrer">View award announcement <ArrowUpRight size={14}/></a>
+        <div className="awards">
+          <div className="competency-heading">
+            <div>
+              <h3>Awards & recognition</h3>
+              <p>Competitions and appreciation for work in networking, security, and metaverse development.</p>
+            </div>
           </div>
-          <div>
-            <Trophy size={22} strokeWidth={1.5}/>
-            <h3>MikroTik–APJII Network Olympiad 2020 Winner</h3>
-            <p>Indonesian Internet Service Providers Association</p>
-            <a className="credential-link" href="https://drive.google.com/file/d/1IDdxrQFidaUtVKRNf5_lOA_zeAA3Wh1h/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate <ArrowUpRight size={14}/></a>
+          <div className="award-grid">
+            {awards.map(a => <button key={a.image} className="award-card" onClick={() => setCertificate({ title: `${a.place} · ${a.title}`, meta: `${a.issuer} · ${a.date}`, image: a.image, width: a.width, height: a.height, alt: a.alt })}>
+              <div className="award-preview">
+                <Image src={a.image} alt={a.alt} width={a.width} height={a.height} sizes="(max-width: 760px) 90vw, 30vw"/>
+              </div>
+              <div className="award-info">
+                <span className={a.place.includes("Place") ? "award-place is-winner" : "award-place"}>
+                  {a.place.includes("Place") ? <Trophy size={13}/> : <Award size={13}/>}
+                  {a.place}
+                </span>
+                <h4>{a.title}</h4>
+                <p>{a.issuer}</p>
+                <div className="award-bottom">
+                  <span>{a.date}</span>
+                  <span className="competency-cta">View certificate <Maximize2 size={14}/></span>
+                </div>
+              </div>
+            </button>)}
           </div>
         </div>
       </section>
@@ -541,12 +553,12 @@ export default function Home() {
                 {certificate.title}
               </DialogTitle>
               <DialogDescription className="certificate-meta">
-                Universitas Teknokrat Indonesia · {certificate.date}
+                {certificate.meta}
               </DialogDescription>
             </div>
             <a href={certificate.image} target="_blank" rel="noopener noreferrer">Open full size <ArrowUpRight size={15}/></a>
           </div>
-          <img src={certificate.image} alt={certificate.alt} width="800" height="565"/>
+          <Image src={certificate.image} alt={certificate.alt} width={certificate.width} height={certificate.height} sizes="(max-width: 960px) 92vw, 880px"/>
         </>}
       </DialogContent>
     </Dialog>

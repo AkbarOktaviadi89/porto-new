@@ -88,3 +88,20 @@ export const education = [
     }
 ];
 export const courses = ["Linux System Administration", "Cloud Practitioner Essentials", "Docker Fundamentals"];
+export const awards = [
+    {
+        place: "1st Place", title: "MikroTik–APJII Network Olympiad 2020", issuer: "MikroTik & APJII · National, vocational high school level", date: "OCT 2020", image: "/credentials/award-mikrotik-apjii-olympiad-2020.jpg", width: 608, height: 860, alt: "Certificate naming Akbar Oktaviadi 1st place in the national MikroTik–APJII Network Olympiad 2020"
+    },
+    {
+        place: "1st Place", title: "Cyber Security Competition", issuer: "Gebyar Mahasiswa FTIK 2024 · Universitas Teknokrat Indonesia", date: "NOV 2024", image: "/credentials/award-cyber-security-competition-2024.jpg", width: 3084, height: 2248, alt: "Certificate naming Akbar Oktaviadi 1st winner of the Cyber Security Competition at Gebyar Mahasiswa FTIK 2024"
+    },
+    {
+        place: "2nd Place", title: "Mobile Programming II", issuer: "Teknokrat Academic Expo 2024 · Team Combased Teknokrat", date: "JAN 2024", image: "/credentials/award-mobile-programming-expo-2024.jpg", width: 2640, height: 1916, alt: "Certificate awarding team Combased Teknokrat 2nd place in Mobile Programming II at Teknokrat Academic Expo 2024"
+    },
+    {
+        place: "Award", title: "Work of Innovation in Metaverse Development", issuer: "Universitas Teknokrat Indonesia", date: "MAR 2024", image: "/credentials/award-metaverse-innovation-2024.jpg", width: 2568, height: 1804, alt: "Certificate of appreciation from Universitas Teknokrat Indonesia to Akbar Oktaviadi for innovation in metaverse development"
+    },
+    {
+        place: "Appreciation", title: "Metaverse School of SMA Al-Kautsar", issuer: "SMA Al-Kautsar Bandar Lampung", date: "AUG 2024", image: "/credentials/award-metaverse-school-al-kautsar-2024.jpg", width: 2568, height: 1824, alt: "Certificate of appreciation to Akbar Oktaviadi for contributions to the Metaverse School of SMA Al-Kautsar"
+    }
+];
