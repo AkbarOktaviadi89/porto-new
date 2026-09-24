@@ -56,7 +56,7 @@ export default function Home() {
             window.location.href = "mailto:akbaroktaviadi89@gmail.com";
         }
     }
-    const nav = [{ id: "work", name: "Work" }, { id: "about", name: "About" }, { id: "journey", name: "Experience" }, { id: "contact", name: "Contact" }];
+    const nav = [{ id: "work", name: "Work" }, { id: "about", name: "About" }, { id: "journey", name: "Experience" }, { id: "credentials", name: "Certifications" }, { id: "contact", name: "Contact" }];
     return <div className={motion ? "portfolio motion-on" : "portfolio"}>
     <a href="#main" className="skip-link">Skip to content</a>
     <div className="scroll-progress" ref={progress}/>
@@ -67,7 +67,7 @@ export default function Home() {
           {n.name}
         </a>)}
       </nav>
-      <a className="nav-contact" href="mailto:akbaroktaviadi89@gmail.com">Let’s talk <ArrowUpRight size={16}/></a>
+      <a className="nav-contact" href="#contact" onClick={() => setMenu(false)}>Let’s talk <ArrowRight size={16}/></a>
       <button className="mobile-menu icon-button" onClick={() => setMenu(!menu)} aria-expanded={menu} aria-label={menu ? "Close menu" : "Open menu"}>
         {menu ? <X /> : <Menu />}
       </button>
@@ -272,7 +272,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="section credentials">
+      <section id="credentials" className="section credentials">
         <div className="section-heading">
           <h2>Certifications &<br /><span>recognition.</span></h2>
           <p>Training and certifications in<br />cybersecurity and network engineering.</p>
