@@ -650,6 +650,32 @@ p {
   gap: 40px 28px;
 }
 
+.project-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.project-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  margin-top: 14px;
+  padding: 7px 12px;
+  border: 1px solid #d6e0ee;
+  border-radius: 7px;
+  background: #fff;
+  font-size: 13px;
+  color: #234dc3;
+  transition: border-color .2s,background .2s;
+}
+
+.project-visit:hover {
+  border-color: var(--primary);
+  background: #eef3fe;
+}
+
 .projects-subheading {
   margin: 72px 0 24px;
   padding-top: 32px;

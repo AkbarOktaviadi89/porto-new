@@ -52,7 +52,8 @@ export default function Home() {
             window.location.href = "mailto:akbaroktaviadi89@gmail.com";
         }
     }
-    const projectCard = (p: (typeof projects)[number], i: number) => <button key={p.name} className={`project-card ${p.domain ? "is-live" : ""}`} onClick={() => setProject(i)}>
+    const projectCard = (p: (typeof projects)[number], i: number) => <div key={p.name} className="project-item">
+      <button className={`project-card ${p.domain ? "is-live" : ""}`} onClick={() => setProject(i)}>
       <div className={`project-art art-${p.type}`}>
         <div className="art-top">
           <span>
@@ -164,7 +165,11 @@ export default function Home() {
       <p className="project-sub">
         {p.tags.join(" / ")}
       </p>
-    </button>;
+      </button>
+      {p.domain && <a className="project-visit" href={`https://${p.domain}`} target="_blank" rel="noopener noreferrer">
+        Visit {p.domain} <ArrowUpRight size={14}/>
+      </a>}
+    </div>;
     const nav = [{ id: "about", name: "About" }, { id: "work", name: "Work" }, { id: "teaching", name: "Teaching" }, { id: "journey", name: "Experience" }, { id: "credentials", name: "Certifications" }, { id: "contact", name: "Contact" }];
     return <div className={motion ? "portfolio motion-on" : "portfolio"}>
     <a href="#main" className="skip-link">Skip to content</a>
