@@ -179,7 +179,7 @@ export default function Home() {
       <section id="about" className="section about">
         <div className="about-content">
           <div className="identity">
-            <Image className="identity-photo" src="/img/profile.png" alt="Akbar Oktaviadi smiling while working on a laptop" width={940} height={898} sizes="(max-width: 760px) 85px, 280px"/>
+            <Image className="identity-photo" src="/img/profile-new.png" alt="Akbar Oktaviadi smiling while working on a laptop" width={940} height={898} sizes="(max-width: 760px) 85px, 280px"/>
             <div className="identity-caption">
               <strong>Akbar Oktaviadi</strong>
               <span>Backend Developer & Network Engineer</span>
