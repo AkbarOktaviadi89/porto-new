@@ -60,9 +60,9 @@ export const domains = [
     }
 ];
 export const certifications = [{
-        code: "CEH", name: "Certified Ethical Hacker", org: "EC-Council", date: "JUN 2024", credential: null, url: null
+        code: "CEH", name: "Certified Ethical Hacker", org: "EC-Council", date: "JUN 2024", credential: null, url: "https://drive.google.com/file/d/1BNBujGlzD30ZQy4aKemyqbzc8AJ8tEhL/view?usp=sharing"
     }, {
-        code: "CTIA", name: "Certified Threat Intelligence Analyst", org: "EC-Council", date: "JUN 2024", credential: null, url: null
+        code: "CTIA", name: "Certified Threat Intelligence Analyst", org: "EC-Council", date: "JUN 2024", credential: null, url: "https://drive.google.com/file/d/1px46pOTkldGRPXKTFigQUNAfG3nKN_oJ/view?usp=sharing"
     }, {
         code: "MTCRE", name: "MikroTik Certified Routing Engineer", org: "MikroTik", date: "NOV 2020", credential: "2011RE4583", url: "https://mikrotik.com/training/certificates/c194583ce91199d20948"
     }, {

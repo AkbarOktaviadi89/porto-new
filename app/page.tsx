@@ -392,7 +392,7 @@ export default function Home() {
               <span className="cert-org">
                 {c.org}
               </span>
-              {c.url && <a className="credential-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`Verify ${c.code} certificate`}>Verify <ArrowUpRight size={14}/></a>}
+              {c.url && <a className="credential-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${c.credential ? "Verify" : "View"} ${c.code} certificate`}>{c.credential ? "Verify" : "View"} <ArrowUpRight size={14}/></a>}
             </div>
           </article>)}
         </div>
