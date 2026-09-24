@@ -1,9 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart, ChevronDown } from "lucide-react";
+import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import Scene from "./scene";
 import { BrandMark } from "@/components/brand-mark";
 import { projects, experience, domains, certifications, competencies, education, courses, awards } from "@/lib/portfolio-data";
 export default function Home() {
@@ -11,9 +10,6 @@ export default function Home() {
     const [showAllExperience, setShowAllExperience] = useState(false);
     const [certificate, setCertificate] = useState<{ title: string; meta: string; image: string; width: number; height: number; alt: string } | null>(null);
     const [menu, setMenu] = useState(false);
-    const [paused, setPaused] = useState(false);
-    const [mode, setMode] = useState(0);
-    const [reset, setReset] = useState(0);
     const [active, setActive] = useState("home");
     const [copied, setCopied] = useState(false);
     const [time, setTime] = useState("UTC+7");
@@ -21,12 +17,8 @@ export default function Home() {
     const progress = useRef<HTMLDivElement>(null);
     useEffect(() => {
         const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-        setPaused(media.matches);
         setMotion(!media.matches);
-        const change = () => {
-            setPaused(media.matches);
-            setMotion(!media.matches);
-        };
+        const change = () => setMotion(!media.matches);
         media.addEventListener("change", change);
         const clock = () => setTime(new Intl.DateTimeFormat("en-GB", {
             timeZone: "Asia/Jakarta", hour: "2-digit", minute: "2-digit", hour12: false
@@ -194,25 +186,29 @@ export default function Home() {
               <a href="/CV-AkbarOktaviadi.pdf" download className="secondary-button">Download CV <Download size={17}/></a>
             </div>
           </div>
-          <div className="scene-shell">
-            <div className="scene-corner top-left">
-              <span className="scene-title">SYSTEM ARCHITECTURE</span>
-              <div className="mode-options" role="group" aria-label="Focus the diagram on a discipline">
-                {["Backend", "Networking", "Security"].map((v, i) => <button key={v} onClick={() => setMode(i)} aria-pressed={mode === i} className={mode === i ? "selected" : ""}>
-                  {v}
-                </button>)}
+          <div className="hero-portrait">
+            <div className="portrait-frame">
+              <Image src="/img/profile-new.png" alt="Akbar Oktaviadi smiling while working on a laptop" width={940} height={898} sizes="(max-width: 760px) 92vw, 44vw" priority/>
+            </div>
+            <div className="float-badge badge-live">
+              <span className="badge-dot"/>
+              <div>
+                <strong>{projects.filter(p => p.domain).length} live products</strong>
+                <small>jeon.id · noodu.id · kubbahari</small>
               </div>
             </div>
-            <Scene paused={paused} mode={mode} reset={reset}/>
-            <div className="scene-bottom">
-              <span>DRAG TO ORBIT · SELECT A NODE</span>
-              <div className="scene-controls">
-                <button className="icon-button" onClick={() => setPaused(!paused)} aria-label={paused ? "Play data flow" : "Pause data flow"}>
-                  {paused ? <Play size={15}/> : <Pause size={15}/>}
-                </button>
-                <button className="icon-button" onClick={() => setReset(reset + 1)} aria-label="Reset architecture view">
-                  <RotateCcw size={15}/>
-                </button>
+            <div className="float-badge badge-mentor">
+              <span className="badge-icon"><GraduationCap size={18}/></span>
+              <div>
+                <strong>Coding Mentor</strong>
+                <small>Algorithmics Global</small>
+              </div>
+            </div>
+            <div className="float-badge badge-cert">
+              <span className="badge-icon"><ShieldCheck size={18}/></span>
+              <div>
+                <strong>CEH · CTIA</strong>
+                <small>EC-Council certified</small>
               </div>
             </div>
           </div>
@@ -230,16 +226,8 @@ export default function Home() {
       </div>
       <section id="about" className="section about">
         <div className="about-content">
-          <div className="identity">
-            <Image className="identity-photo" src="/img/profile-new.png" alt="Akbar Oktaviadi smiling while working on a laptop" width={940} height={898} sizes="(max-width: 760px) 85px, 280px"/>
-            <div className="identity-caption">
-              <strong>Akbar Oktaviadi</strong>
-              <span>Web Developer & Coding Mentor</span>
-            </div>
-            <a href="/CV-AkbarOktaviadi.pdf" download className="secondary-button">Download CV <Download size={16}/></a>
-          </div>
+          <h2 className="about-heading">Engineering with context.<br /><span>Learning with purpose.</span></h2>
           <div className="about-text">
-            <h2>Engineering with context.<br /><span>Learning with purpose.</span></h2>
             <p className="about-lead">Good digital experiences begin with well-engineered foundations.</p>
             <p>I am an Informatics graduate from Universitas Teknokrat Indonesia, focused on web development, Linux system administration, and networking. I bring backend logic, reliable infrastructure, and security thinking together.</p>
             <p>Alongside building systems, I teach programming and computer networking. Sharing knowledge keeps me curious and challenges me to make complex ideas clear.</p>
