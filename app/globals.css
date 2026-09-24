@@ -424,28 +424,7 @@ p {
   position: relative;
   justify-self: end;
   width: min(100%,470px);
-  margin: 8px 30px 30px 0;
-}
-
-.hero-portrait:before {
-  content: "";
-  position: absolute;
-  inset: 34px -30px -30px 34px;
-  border-radius: 30px;
-  background: linear-gradient(145deg,#2d5eea,#7aa0ff);
-  opacity: .9;
-}
-
-.hero-portrait:after {
-  content: "";
-  position: absolute;
-  top: -22px;
-  left: -26px;
-  width: 120px;
-  height: 120px;
-  background-image: radial-gradient(#9fb4d8 1.2px,transparent 1.2px);
-  background-size: 14px 14px;
-  z-index: -1;
+  margin: 8px 0 30px;
 }
 
 .portrait-frame {
@@ -455,7 +434,7 @@ p {
   padding: 10px;
   border-radius: 28px;
   background: #fff;
-  box-shadow: 0 30px 60px #1f3a6a26;
+  box-shadow: 0 1px 2px #1f3a6a14,0 12px 24px -6px #1f3a6a1f,0 40px 80px -20px #1f3a6a47;
 }
 
 .portrait-frame img {
@@ -2309,15 +2288,8 @@ footer>span {
   }
   .hero-portrait {
     justify-self: center;
-    width: calc(100% - 22px);
-    margin: 18px 22px 32px 0;
-  }
-  .hero-portrait:before {
-    inset: 26px -18px -18px 26px;
-    border-radius: 22px;
-  }
-  .hero-portrait:after {
-    display: none;
+    width: 100%;
+    margin: 18px 0 32px;
   }
   .portrait-frame {
     aspect-ratio: 4/4.1;

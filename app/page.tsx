@@ -232,14 +232,6 @@ export default function Home() {
                 <strong>3.82<span>/4.00</span></strong>
                 <span>GPA · Bachelor of Informatics</span>
               </div>
-              <div>
-                <strong>6</strong>
-                <span>Certifications & competency awards</span>
-              </div>
-              <div>
-                <strong>{projects.length}</strong>
-                <span>Projects completed, {projects.filter(p => p.domain).length} live in production</span>
-              </div>
             </div>
           </div>
         </div>
