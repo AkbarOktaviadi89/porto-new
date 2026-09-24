@@ -1385,15 +1385,27 @@ p {
   color: #9fb7db;
 }
 
-.whatsapp {
+.contact-links {
   display: flex;
-  align-items: center;
-  gap: 18px;
-  font-size: 13px;
-  color: #a0b6d5;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.whatsapp:hover {
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 16px;
+  border: 1px solid #496181;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #c9d7ec;
+  transition: border-color .2s,color .2s,background .2s;
+}
+
+.contact-button:hover {
+  border-color: #88aeed;
+  background: #ffffff0d;
   color: #fff;
 }
 
@@ -2143,7 +2155,7 @@ footer>span {
   .copy-status {
     top: 34px;
   }
-  .whatsapp {
+  .contact-button {
     font-size: 13px;
   }
   footer {

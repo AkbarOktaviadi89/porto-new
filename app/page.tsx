@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy } from "lucide-react";
+import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Scene from "./scene";
 import { projects, experience, domains, certifications, competencies } from "@/lib/portfolio-data";
@@ -346,7 +346,7 @@ export default function Home() {
       </section>
       <section id="contact" className="section contact">
         <div className="contact-top">
-          <span>HAVE SOMETHING IN MIND?</span>
+          <span>GET IN TOUCH</span>
           <span>BANDAR LAMPUNG, INDONESIA</span>
         </div>
         <h2>Have a project in mind?<br /><a href="mailto:akbaroktaviadi89@gmail.com">Let’s talk.<ArrowUpRight /></a></h2>
@@ -360,7 +360,10 @@ export default function Home() {
               {copied ? "Email copied" : ""}
             </span>
           </div>
-          <a className="whatsapp" href="https://wa.me/628988025991" target="_blank" rel="noopener noreferrer">Contact on WhatsApp <ArrowUpRight size={17}/></a>
+          <div className="contact-links">
+            <a className="contact-button" href="https://wa.me/628988025991" target="_blank" rel="noopener noreferrer">WhatsApp <ArrowUpRight size={16}/></a>
+            <a className="contact-button" href="https://www.linkedin.com/in/akbar-oktaviadi/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={16}/></a>
+          </div>
         </div>
       </section>
     </main>
@@ -372,7 +375,7 @@ export default function Home() {
         <a href="https://www.linkedin.com/in/akbar-oktaviadi/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={16}/></a>
         <a href="https://instagram.com/akbaroktaa_" target="_blank" rel="noopener noreferrer">Instagram <ArrowUpRight size={16}/></a>
       </div>
-      <a href="#home" className="back-top">Back to top <ArrowUpRight size={16}/></a>
+      <a href="#home" className="back-top">Back to top <ArrowUp size={16}/></a>
     </footer>
     <Dialog open={project !== null} onOpenChange={v => {
             if (!v)
