@@ -111,6 +111,16 @@ export default function Home() {
             <span>QRIS</span>
           </div>
           <div className="art-caption">CATALOG → CART → XENDIT CHECKOUT</div>
+        </div> : p.type === "tracker" ? <div className="tracker-art">
+          <div className="tracker-panel">
+            <span className="tracker-title"><ShieldCheck size={14}/>cybertrack</span>
+            {[["Writeups", 72], ["Tools", 54], ["Cheatsheets", 88]].map(([label, value]) => <div key={label} className="tracker-row">
+              <span>{label}</span>
+              <i><b style={{ width: `${value}%` }}/></i>
+              <span>{value}%</span>
+            </div>)}
+          </div>
+          <div className="art-caption">WRITEUPS · TOOLS · CHEATSHEETS</div>
         </div> : p.type === "web" ? <div className="meta-art">
           <span className="meta-word">meta<span>tekno</span></span>
           <div className="meta-coordinate">THREE.JS EXPERIENCE / LARAVEL CMS</div>
@@ -270,7 +280,7 @@ export default function Home() {
         <div className="projects projects-live">
           {projects.map((p, i) => p.domain && projectCard(p, i))}
         </div>
-        <h3 className="projects-subheading">Earlier projects</h3>
+        <h3 className="projects-subheading">More projects</h3>
         <div className="projects">
           {projects.map((p, i) => !p.domain && projectCard(p, i))}
         </div>

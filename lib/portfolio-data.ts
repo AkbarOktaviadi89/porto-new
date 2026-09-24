@@ -1,6 +1,6 @@
 import { Code2, Network, ShieldCheck } from "lucide-react";
 type ProjectLink = { label: string; href: string };
-type Project = { name: string; category: string; year: string; type: "creator" | "queue" | "inventory" | "learning" | "shop" | "web" | "api" | "security"; domain?: string; desc: string; tags: string[]; role: string; scope: string[]; links: ProjectLink[] };
+type Project = { name: string; category: string; year: string; type: "creator" | "queue" | "inventory" | "learning" | "shop" | "tracker" | "web" | "api" | "security"; domain?: string; desc: string; tags: string[]; role: string; scope: string[]; links: ProjectLink[] };
 // Projects with a domain are live products and are listed first.
 export const projects: Project[] = [
     {
@@ -8,6 +8,9 @@ export const projects: Project[] = [
     },
     {
         name: "Noodu", category: "Learning platform", year: "2026", type: "learning", domain: "noodu.id", desc: "A project-based learning platform for digital careers, where learners build real projects with practitioner mentors instead of only watching videos.", tags: ["Next.js", "PostgreSQL", "Redis"], role: "Web Developer", scope: ["Developed the Next.js platform, including the CMS-driven public website.", "Supports three learning paths: one-on-one case project mentoring, cohort training, and self-paced courses with quizzes and certificates.", "Structured as a Turborepo monorepo on PostgreSQL and Redis."], links: [{ label: "Visit noodu.id", href: "https://noodu.id" }]
+    },
+    {
+        name: "CyberTrack", category: "Bug bounty learning", year: "2026", type: "tracker", domain: "cyber-track-v1.vercel.app", desc: "A bug bounty learning OS that keeps cybersecurity writeups, tools, and cheatsheets in one place and tracks learning progress across topics.", tags: ["Next.js", "Supabase", "Cybersecurity"], role: "Full-stack Developer", scope: ["Built the app with Next.js and Supabase for authentication and data storage.", "Organized study material into writeups, a tools library, and cheatsheets.", "Tracks learning progress so it is clear what has been covered and what comes next."], links: [{ label: "Visit CyberTrack", href: "https://cyber-track-v1.vercel.app/" }]
     },
     {
         name: "Kubbahari", category: "E-commerce", year: "2026", type: "shop", domain: "kubbahari.web.id", desc: "An online store for the Kelompok Usaha Bersama Bahari fishing cooperative, selling premium dried anchovies and squid sourced directly from local fishermen.", tags: ["Laravel", "Xendit", "WhatsApp API"], role: "Web Developer", scope: ["Built the Laravel 10 storefront with a product catalog, cart, and checkout.", "Integrated Xendit payments (bank transfer and QRIS) with webhook-based order status updates.", "Sent order notifications over WhatsApp through the Fonnte API.", "Added an admin panel for products, orders, testimonials, and store settings."], links: [{ label: "Visit kubbahari.web.id", href: "https://kubbahari.web.id" }]
@@ -67,6 +70,10 @@ export const certifications = [{
         code: "MTCRE", name: "MikroTik Certified Routing Engineer", org: "MikroTik", date: "NOV 2020", credential: "2011RE4583", url: "https://mikrotik.com/training/certificates/c194583ce91199d20948"
     }, {
         code: "MTCNA", name: "MikroTik Certified Network Associate", org: "MikroTik", date: "OCT 2020", credential: "2010NA4308", url: "https://mikrotik.com/training/certificates/c194308ce66b4a5988f7"
+    }, {
+        code: "JrPT", name: "Jr Penetration Tester", org: "TryHackMe", date: "FEB 2023", credential: "THM-0MFJXFIKOK", url: "https://tryhackme.com/certificate/THM-0MFJXFIKOK"
+    }, {
+        code: "PenTest+", name: "CompTIA PenTest+ Path", org: "TryHackMe", date: "MAR 2023", credential: "THM-GIDJNPHAP9", url: "https://tryhackme.com/certificate/THM-GIDJNPHAP9"
     }];
 export const competencies = [
     {
