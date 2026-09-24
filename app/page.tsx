@@ -5,6 +5,7 @@ import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, D
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { BrandMark } from "@/components/brand-mark";
 import { projects, experience, domains, certifications, competencies, education, courses, awards } from "@/lib/portfolio-data";
+const yearsSince = (year: number, monthIndex: number) => Math.floor((Date.now() - new Date(year, monthIndex).getTime()) / (365.25 * 24 * 3600 * 1000));
 export default function Home() {
     const [project, setProject] = useState<number | null>(null);
     const [showAllExperience, setShowAllExperience] = useState(false);
@@ -209,6 +210,17 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="hero-live">
+          <span className="hero-live-label"><span className="pulse-dot"/>Live in production</span>
+          <ul>
+            {projects.filter(p => p.domain).map(p => <li key={p.domain}>
+              <a href={`https://${p.domain}`} target="_blank" rel="noopener noreferrer">
+                <strong>{p.name}</strong>
+                <ArrowUpRight size={14}/>
+              </a>
+            </li>)}
+          </ul>
+        </div>
       </section>
       <div className="expertise-ribbon" role="region" aria-label="Areas of expertise">
         <div className="ribbon-track">
@@ -231,6 +243,14 @@ export default function Home() {
               <div>
                 <strong>3.82<span>/4.00</span></strong>
                 <span>GPA · Bachelor of Informatics</span>
+              </div>
+              <div>
+                <strong>{yearsSince(2019, 10)}+<span> yrs</span></strong>
+                <span>Hands-on in IT, since networking work in 2019</span>
+              </div>
+              <div>
+                <strong>{yearsSince(2023, 1)}+<span> yrs</span></strong>
+                <span>Teaching programming and computer networking</span>
               </div>
             </div>
           </div>

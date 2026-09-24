@@ -248,17 +248,30 @@ p {
 }
 
 .hero {
+  position: relative;
   padding: 32px 6% 0;
   max-width: 1700px;
   margin: auto;
 }
 
+.hero:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -90px calc(50% - 50vw) 0;
+  background-image: linear-gradient(#dfe6f0 1px,transparent 1px),linear-gradient(90deg,#dfe6f0 1px,transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 70% 40%,#000 20%,transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 65% at 70% 40%,#000 20%,transparent 75%);
+  opacity: .8;
+}
+
 .hero-main {
   display: grid;
-  grid-template-columns: .88fr 1.12fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 38px;
-  padding: 36px 0 64px;
+  gap: 48px;
+  padding: 48px 0 56px;
 }
 
 .hero-copy {
@@ -319,6 +332,60 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.hero-live {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 0 30px;
+  border-top: 1px solid var(--border);
+}
+
+.hero-live-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font: 10px var(--font-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1d7a4c;
+}
+
+.hero-live ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-live a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 12px;
+  border: 1px solid #d6e0ee;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  color: #182331;
+  transition: border-color .2s,transform .2s;
+}
+
+.hero-live a:hover {
+  border-color: #91aed5;
+  transform: translateY(-2px);
+}
+
+.hero-live a strong {
+  font-weight: 500;
+}
+
+.hero-live a svg {
+  color: #446ba5;
 }
 
 .hero-eyebrow {
@@ -423,7 +490,7 @@ p {
 .hero-portrait {
   position: relative;
   justify-self: end;
-  width: min(100%,470px);
+  width: min(100%,540px);
   margin: 8px 0 30px;
 }
 
@@ -2282,6 +2349,15 @@ footer>span {
   .hero-eyebrow {
     margin-bottom: 20px;
     font-size: 12px;
+  }
+  .hero-live {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .hero:before {
+    -webkit-mask-image: radial-gradient(ellipse 90% 50% at 50% 30%,#000 10%,transparent 75%);
+    mask-image: radial-gradient(ellipse 90% 50% at 50% 30%,#000 10%,transparent 75%);
   }
   .hero-meta {
     margin-top: 32px;
