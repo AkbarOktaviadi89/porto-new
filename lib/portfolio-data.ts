@@ -60,3 +60,15 @@ export const competencies = [
         title: "Junior Mobile Application Programmer", date: "JUNE 10, 2023", image: "/credentials/junior-mobile-application-programmer.jpg", desc: "Passed the university’s competence-based assessment in mobile application programming.", alt: "Certificate of Competence awarded to Akbar Oktaviadi as a Junior Mobile Application Programmer on June 10, 2023"
     }
 ];
+export const education = [
+    {
+        kind: "Degree", school: "Universitas Teknokrat Indonesia", program: "Bachelor of Informatics", date: "JUL 2021 — JUL 2025", gpa: "3.82", points: ["Teaching assistant for networking and programming courses.", "Mawapres award for Work of Innovation in Metaverse Development (2024).", "Competency certificates as Junior Network Technician and Junior Mobile Application Programmer."], tags: ["Informatics", "Networking", "Web development"]
+    },
+    {
+        kind: "Training", school: "Metrodata Academy", program: "Cyber Red Team · Threat Analyst & Penetration Tester", date: "MAR 2024 — JUN 2024", gpa: null, points: ["Performed vulnerability assessments and penetration tests on a range of systems.", "Simulated cyberattacks with the team and developed mitigation strategies.", "Took part in threat hunting and threat analysis to strengthen security posture."], tags: ["Penetration testing", "Threat hunting", "Red teaming"]
+    },
+    {
+        kind: "Training", school: "Binar Academy", program: "Backend Java", date: "AUG 2023 — DEC 2023", gpa: null, points: ["Built backend applications in Java with a focus on RESTful APIs.", "Worked with front-end developers to integrate user interface elements.", "Participated in code reviews and knowledge sharing within the team."], tags: ["Java", "RESTful API", "Code review"]
+    }
+];
+export const courses = ["Linux System Administration", "Cloud Practitioner Essentials", "Docker Fundamentals"];

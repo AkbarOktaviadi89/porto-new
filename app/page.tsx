@@ -5,7 +5,7 @@ import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, D
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Scene from "./scene";
 import { BrandMark } from "@/components/brand-mark";
-import { projects, experience, domains, certifications, competencies } from "@/lib/portfolio-data";
+import { projects, experience, domains, certifications, competencies, education, courses } from "@/lib/portfolio-data";
 export default function Home() {
     const [project, setProject] = useState<number | null>(null);
     const [certificate, setCertificate] = useState<(typeof competencies)[number] | null>(null);
@@ -266,21 +266,45 @@ export default function Home() {
           </li>)}
         </ol>
         <div className="education">
-          <div className="education-title">
-            <GraduationCap size={28}/>
-            <h3>Education & training</h3>
+          <div className="education-heading">
+            <GraduationCap size={26} strokeWidth={1.5}/>
+            <div>
+              <h3>Education & training</h3>
+              <p>A formal degree and intensive programs in security and backend engineering.</p>
+            </div>
           </div>
-          <div>
-            <h4>Universitas Teknokrat Indonesia</h4>
-            <p>Bachelor of Informatics · 2021—2025</p>
+          <div className="education-grid">
+            {education.map(e => <article key={e.school} className={e.gpa ? "education-card is-degree" : "education-card"}>
+              <div className="education-top">
+                <span className="education-kind">{e.kind}</span>
+                <span className="education-date">{e.date}</span>
+              </div>
+              <h4>{e.school}</h4>
+              <p className="education-program">{e.program}</p>
+              {e.gpa && <div className="education-gpa">
+                <strong>{e.gpa}<span>/4.00</span></strong>
+                <span>Cumulative GPA</span>
+              </div>}
+              <ul>
+                {e.points.map(pt => <li key={pt}>
+                  {pt}
+                </li>)}
+              </ul>
+              <div className="tags">
+                {e.tags.map(t => <span key={t}>
+                  {t}
+                </span>)}
+              </div>
+            </article>)}
           </div>
-          <div>
-            <h4>Metrodata Academy</h4>
-            <p>Cyber Red Team · 2024</p>
-          </div>
-          <div>
-            <h4>Binar Academy</h4>
-            <p>Backend Java · 2023</p>
+          <div className="courses">
+            <span>Additional courses</span>
+            <ul>
+              {courses.map(c => <li key={c}>
+                <Check size={14}/>
+                {c}
+              </li>)}
+            </ul>
           </div>
         </div>
       </section>
