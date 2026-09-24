@@ -1,0 +1,412 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, ArrowDown, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import Scene from "./scene";
+import { projects, experience, domains, certifications } from "@/lib/portfolio-data";
+export default function Home() {
+    const [project, setProject] = useState<number | null>(null);
+    const [menu, setMenu] = useState(false);
+    const [paused, setPaused] = useState(false);
+    const [mode, setMode] = useState(0);
+    const [reset, setReset] = useState(0);
+    const [active, setActive] = useState("home");
+    const [copied, setCopied] = useState(false);
+    const [time, setTime] = useState("UTC+7");
+    const [motion, setMotion] = useState(false);
+    const progress = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+        setPaused(media.matches);
+        setMotion(!media.matches);
+        const change = () => {
+            setPaused(media.matches);
+            setMotion(!media.matches);
+        };
+        media.addEventListener("change", change);
+        const clock = () => setTime(new Intl.DateTimeFormat("en-GB", {
+            timeZone: "Asia/Jakarta", hour: "2-digit", minute: "2-digit", hour12: false
+        }).format(new Date()) + " UTC+7");
+        clock();
+        const interval = setInterval(clock, 60000);
+        const scroll = () => {
+            if (progress.current)
+                progress.current.style.transform = `scaleX(${window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)})`;
+        };
+        window.addEventListener("scroll", scroll, { passive: true });
+        const observer = new IntersectionObserver(entries => entries.forEach(e => {
+            if (e.isIntersecting)
+                setActive(e.target.id);
+        }), { rootMargin: "-20% 0px -55% 0px" });
+        document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+        return () => {
+            clearInterval(interval);
+            observer.disconnect();
+            window.removeEventListener("scroll", scroll);
+            media.removeEventListener("change", change);
+        };
+    }, []);
+    async function copyEmail() {
+        try {
+            await navigator.clipboard.writeText("akbaroktaviadi89@gmail.com");
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2500);
+        }
+        catch {
+            window.location.href = "mailto:akbaroktaviadi89@gmail.com";
+        }
+    }
+    const nav = [{ id: "work", name: "Work" }, { id: "about", name: "About" }, { id: "journey", name: "Experience" }, { id: "contact", name: "Contact" }];
+    return <div className={motion ? "portfolio motion-on" : "portfolio"}>
+    <a href="#main" className="skip-link">Skip to content</a>
+    <div className="scroll-progress" ref={progress}/>
+    <header className="nav">
+      <a className="brand" href="#home" aria-label="Akbar Oktaviadi, home">ao<span>.</span></a>
+      <nav aria-label="Main navigation" className={menu ? "nav-links open" : "nav-links"}>
+        {nav.map(n => <a key={n.id} className={active === n.id ? "active" : ""} href={`#${n.id}`} onClick={() => setMenu(false)}>
+          {n.name}
+        </a>)}
+      </nav>
+      <a className="nav-contact" href="mailto:akbaroktaviadi89@gmail.com">Let’s talk <ArrowUpRight size={16}/></a>
+      <button className="mobile-menu icon-button" onClick={() => setMenu(!menu)} aria-expanded={menu} aria-label={menu ? "Close menu" : "Open menu"}>
+        {menu ? <X /> : <Menu />}
+      </button>
+    </header>
+    <main id="main">
+      <section id="home" className="hero">
+        <div className="hero-top">
+          <span>AKBAR OKTAVIADI</span>
+          <span>BANDAR LAMPUNG, ID <span className="clock">
+              {time}
+            </span></span>
+        </div>
+        <div className="hero-main">
+          <div className="hero-copy">
+            <h1>Akbar<br /><span>Oktaviadi.</span></h1>
+            <div className="hero-description">
+              <p className="hero-role">Backend developer.<br />Network engineer. Security-minded.<span>I build web applications and the infrastructure<br className="desktop-break"/> that keeps them connected, secure, and reliable.</span></p>
+            </div>
+            <a href="#work" className="primary-button">Explore my work <ArrowDown size={18}/></a>
+          </div>
+          <div className="scene-shell">
+            <div className="scene-corner top-left">SYSTEM ARCHITECTURE <span>CONCEPTUAL VIEW</span></div>
+            <Scene paused={paused} mode={mode} reset={reset}/>
+            <div className="scene-bottom">
+              <span>DRAG TO ORBIT · SELECT A NODE</span>
+              <div className="scene-controls">
+                <button className="icon-button" onClick={() => setPaused(!paused)} aria-label={paused ? "Play data flow" : "Pause data flow"}>
+                  {paused ? <Play size={15}/> : <Pause size={15}/>}
+                </button>
+                <button className="icon-button" onClick={() => setReset(reset + 1)} aria-label="Reset architecture view">
+                  <RotateCcw size={15}/>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="hero-bottom">
+          <span>FROM APPLICATION TO INFRASTRUCTURE</span>
+          <div className="mode-options" aria-label="Explore an engineering discipline">
+            {["Backend", "Networking", "Security"].map((v, i) => <button key={v} onClick={() => setMode(i)} aria-pressed={mode === i} className={mode === i ? "selected" : ""}>
+              <span>0{i + 1}</span>
+              {v}
+            </button>)}
+          </div>
+          <span className="scroll-hint">SCROLL TO EXPLORE <ArrowDown size={14}/></span>
+        </div>
+      </section>
+      <div className="expertise-ribbon" aria-label="Areas of expertise">
+        <span>BACKEND DEVELOPMENT</span>
+        <Plus />
+        <span>NETWORK ENGINEERING</span>
+        <Plus />
+        <span>CYBERSECURITY</span>
+        <Plus />
+        <span>LINUX SYSTEM ADMINISTRATION</span>
+      </div>
+      <section id="work" className="section works">
+        <div className="section-heading">
+          <h2>Selected <span>work.</span></h2>
+          <p>Selected projects across web development,<br />backend systems, and security assessment.</p>
+        </div>
+        <div className="projects">
+          {projects.map((p, i) => <button key={p.name} className={`project-card project-${i}`} onClick={() => setProject(i)}>
+            <div className={`project-art art-${p.type}`}>
+              <div className="art-top">
+                <span>
+                  {p.category}
+                </span>
+                <ArrowUpRight />
+              </div>
+              {i === 0 ? <div className="meta-art">
+                <span className="meta-word">meta<span>tekno</span></span>
+                <div className="meta-coordinate">THREE.JS EXPERIENCE / LARAVEL CMS</div>
+                <div className="meta-caption">EXPLORE ANOTHER DIMENSION</div>
+              </div> : i === 1 ? <div className="api-art">
+                <span className="code-line"><b>JAVA</b> RESTful architecture</span>
+                <div className="api-flow">
+                  <span>USER</span>
+                  <ArrowRight size={20}/>
+                  <span className="api-core">bytecode<span>REST API</span></span>
+                  <ArrowRight size={20}/>
+                  <span>DATA</span>
+                </div>
+                <div className="code-response">Learners <span>· Courses · Progress</span></div>
+              </div> : <div className="security-art">
+                <ShieldCheck size={92} strokeWidth={.7}/>
+                <span className="security-title">Trust, verified.</span>
+                <span className="security-caption">ASSESS → ANALYZE → MITIGATE</span>
+              </div>}
+              <span className="project-number">0{i + 1} / PROJECT</span>
+              <span className="project-open">View project <Plus size={16}/></span>
+            </div>
+            <div className="project-info">
+              <h3>
+                {p.name}
+              </h3>
+              <span>
+                {p.year}
+              </span>
+            </div>
+            <p className="project-sub">
+              {p.tags.join(" / ")}
+            </p>
+          </button>)}
+        </div>
+      </section>
+      <section id="about" className="section about">
+        <div className="about-top">
+          <div className="section-index">01 / THE PERSON</div>
+          <h2>Engineering with context.<br /><span>Learning with purpose.</span></h2>
+        </div>
+        <div className="about-content">
+          <div className="identity">
+            <div className="identity-monogram">a<span>o</span></div>
+            <div className="identity-caption">
+              <strong>Akbar Oktaviadi</strong>
+              <span>Backend Developer & Network Engineer</span>
+            </div>
+            <a href="/CV-AkbarOktaviadi.pdf" download target="_blank" rel="noopener noreferrer" className="text-link">Original CV (PDF) <Download size={16}/></a>
+          </div>
+          <div className="about-text">
+            <p>Good digital experiences begin with well-engineered foundations.</p>
+            <p>I am an Informatics graduate from Universitas Teknokrat Indonesia, focused on web development, Linux system administration, and networking. I bring backend logic, reliable infrastructure, and security thinking together.</p>
+            <p>Alongside building systems, I teach programming and computer networking. Sharing knowledge keeps me curious and challenges me to make complex ideas clear.</p>
+            <div className="about-facts">
+              <div>
+                <strong>3.82<span>/4.00</span></strong>
+                <span>GPA · Bachelor of Informatics</span>
+              </div>
+              <div>
+                <strong>6</strong>
+                <span>Certifications & competency awards</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="domains">
+          {domains.map((d, i) => <article key={d.title}>
+            <div className="domain-top">
+              <d.icon size={27} strokeWidth={1.3}/>
+              <span>0{i + 1}</span>
+            </div>
+            <h3>
+              {d.title}
+            </h3>
+            <p className="domain-line">
+              {d.line}
+            </p>
+            <p>
+              {d.desc}
+            </p>
+            <div className="tags">
+              {d.tags.map(t => <span key={t}>
+                {t}
+              </span>)}
+            </div>
+          </article>)}
+        </div>
+      </section>
+      <section id="journey" className="section journey">
+        <div className="section-heading">
+          <h2>Professional <span>experience.</span></h2>
+          <p>Hands-on experience across development,<br />infrastructure, and technical education.</p>
+        </div>
+        <div className="timeline">
+          {experience.map((e, i) => <details key={e.role} open={i === 1 ? true : undefined}>
+            <summary>
+              <span className="experience-date">
+                {e.date}
+              </span>
+              <div>
+                <h3>
+                  {e.role}
+                </h3>
+                <p>
+                  {e.company}
+                </p>
+              </div>
+              <Plus size={22}/>
+            </summary>
+            <div className="experience-desc">
+              {e.desc}
+            </div>
+          </details>)}
+        </div>
+        <div className="education">
+          <div className="education-title">
+            <GraduationCap size={28}/>
+            <h3>Education & training</h3>
+          </div>
+          <div>
+            <h4>Universitas Teknokrat Indonesia</h4>
+            <p>Bachelor of Informatics · 2021—2025</p>
+          </div>
+          <div>
+            <h4>Metrodata Academy</h4>
+            <p>Cyber Red Team · 2024</p>
+          </div>
+          <div>
+            <h4>Binar Academy</h4>
+            <p>Backend Java · 2023</p>
+          </div>
+        </div>
+      </section>
+      <section className="section credentials">
+        <div className="section-heading">
+          <h2>Certifications &<br /><span>recognition.</span></h2>
+          <p>Training and certifications in<br />cybersecurity and network engineering.</p>
+        </div>
+        <div className="cert-grid">
+          {certifications.map(c => <article key={c.code}>
+            <div className="cert-top">
+              <ShieldCheck size={21}/>
+              <span>
+                {c.date}
+              </span>
+            </div>
+            <strong>
+              {c.code}
+            </strong>
+            <h3>
+              {c.name}
+            </h3>
+            <span className="cert-org">
+              {c.org}
+            </span>
+            {c.url && <a className="credential-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`View ${c.code} certificate`}>View certificate <ArrowUpRight size={14}/></a>}
+            {c.credential && <span className="credential-id">ID {c.credential} · Issued in 2020</span>}
+          </article>)}
+        </div>
+        <div className="competencies">
+          <div className="competency-heading">
+            <div>
+              <h3>University competency certificates</h3>
+              <p>Competence-based assessments · Universitas Teknokrat Indonesia</p>
+            </div>
+            <a href="https://www.linkedin.com/posts/akbar-oktaviadi_happy-to-be-able-to-obtain-a-competency-certificate-activity-7103346463262314496-UM3P" target="_blank" rel="noopener noreferrer">View LinkedIn post <ArrowUpRight size={15}/></a>
+          </div>
+          <div className="competency-grid">
+            <a className="competency-card" href="/credentials/junior-network-technician.jpg" target="_blank" rel="noopener noreferrer">
+              <div className="competency-preview">
+                <img src="/credentials/junior-network-technician.jpg" alt="Certificate of Competence awarded to Akbar Oktaviadi as a Junior Network Technician on June 10, 2023" width="800" height="565" loading="lazy"/>
+              </div>
+              <div className="competency-info">
+                <span>JUNE 10, 2023</span>
+                <h4>Junior Network Technician</h4>
+                <p>Passed the university’s competence-based assessment in network technology.</p>
+                <span className="competency-cta">View certificate <ArrowUpRight size={16}/></span>
+              </div>
+            </a>
+            <a className="competency-card" href="/credentials/junior-mobile-application-programmer.jpg" target="_blank" rel="noopener noreferrer">
+              <div className="competency-preview">
+                <img src="/credentials/junior-mobile-application-programmer.jpg" alt="Certificate of Competence awarded to Akbar Oktaviadi as a Junior Mobile Application Programmer on June 10, 2023" width="800" height="565" loading="lazy"/>
+              </div>
+              <div className="competency-info">
+                <span>JUNE 10, 2023</span>
+                <h4>Junior Mobile Application Programmer</h4>
+                <p>Passed the university’s competence-based assessment in mobile application programming.</p>
+                <span className="competency-cta">View certificate <ArrowUpRight size={16}/></span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div className="recognitions">
+          <span>RECOGNITION</span>
+          <div>
+            <h3>Work of Innovation in Metaverse Development</h3>
+            <p>Universitas Teknokrat Indonesia · March 2024</p>
+            <a className="credential-link" href="https://www.linkedin.com/posts/akbar-oktaviadi_thrilled-to-receive-the-work-of-innovation-activity-7184038223864631297-MGN9" target="_blank" rel="noopener noreferrer">View award announcement <ArrowUpRight size={14}/></a>
+          </div>
+          <div>
+            <h3>MIKROTIK–APJII Network Olympiad 2020 Winner</h3>
+            <p>Indonesian Internet Service Providers Association</p>
+          </div>
+        </div>
+      </section>
+      <section id="contact" className="section contact">
+        <div className="contact-top">
+          <span>HAVE SOMETHING IN MIND?</span>
+          <span>BANDAR LAMPUNG, INDONESIA</span>
+        </div>
+        <h2>Have a project in mind?<br /><a href="mailto:akbaroktaviadi89@gmail.com">Let’s talk.<ArrowUpRight /></a></h2>
+        <div className="contact-bottom">
+          <div className="email-wrap">
+            <a href="mailto:akbaroktaviadi89@gmail.com">akbaroktaviadi89@gmail.com</a>
+            <button className="icon-button" onClick={copyEmail} aria-label="Copy email address">
+              {copied ? <Check size={18}/> : <Copy size={18}/>}
+            </button>
+            <span role="status" className="copy-status">
+              {copied ? "Email copied" : ""}
+            </span>
+          </div>
+          <a className="whatsapp" href="https://wa.me/628988025991" target="_blank" rel="noopener noreferrer">Contact on WhatsApp <ArrowUpRight size={17}/></a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <a className="brand" href="#home">ao<span>.</span></a>
+      <span>© {new Date().getFullYear()} Akbar Oktaviadi</span>
+      <div className="socials">
+        <a href="https://github.com/AkbarOktaviadi89" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={16}/></a>
+        <a href="https://www.linkedin.com/in/akbar-oktaviadi/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={16}/></a>
+        <a href="https://instagram.com/akbaroktaa_" target="_blank" rel="noopener noreferrer">Instagram <ArrowUpRight size={16}/></a>
+      </div>
+      <a href="#home" className="back-top">Back to top <ArrowUpRight size={16}/></a>
+    </footer>
+    <Dialog open={project !== null} onOpenChange={v => {
+            if (!v)
+                setProject(null);
+        }}>
+      <DialogContent className="project-dialog">
+        {project !== null && <>
+          <span className="dialog-meta">{projects[project].category} / {projects[project].year}</span>
+          <DialogTitle className="dialog-title">
+            {projects[project].name}
+          </DialogTitle>
+          <DialogDescription className="dialog-description">
+            {projects[project].desc}
+          </DialogDescription>
+          <div className="dialog-role">
+            <span>ROLE</span>
+            <strong>
+              {projects[project].role}
+            </strong>
+          </div>
+          <h4>Contributions</h4>
+          <ul>
+            {projects[project].scope.map(s => <li key={s}>
+              {s}
+            </li>)}
+          </ul>
+          <div className="tags">
+            {projects[project].tags.map(t => <span key={t}>
+              {t}
+            </span>)}
+          </div>
+          <a href="mailto:akbaroktaviadi89@gmail.com" className="primary-button">Discuss a similar project <ArrowUpRight size={17}/></a>
+        </>}
+      </DialogContent>
+    </Dialog>
+  </div>;
+}
