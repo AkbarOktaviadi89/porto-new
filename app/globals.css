@@ -1467,6 +1467,33 @@ p {
   margin-top: 16px;
 }
 
+.load-more {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 28px auto 0;
+  padding: 12px 20px;
+  border: 1px solid #b8c4d3;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #283b55;
+  transition: border-color .2s,color .2s;
+}
+
+.load-more:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.load-more svg {
+  transition: transform .2s;
+}
+
+.load-more[aria-expanded=true] svg {
+  transform: rotate(180deg);
+}
+
 .education {
   margin-top: 64px;
 }

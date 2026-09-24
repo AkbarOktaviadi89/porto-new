@@ -1,13 +1,14 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart } from "lucide-react";
+import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Scene from "./scene";
 import { BrandMark } from "@/components/brand-mark";
 import { projects, experience, domains, certifications, competencies, education, courses } from "@/lib/portfolio-data";
 export default function Home() {
     const [project, setProject] = useState<number | null>(null);
+    const [showAllExperience, setShowAllExperience] = useState(false);
     const [certificate, setCertificate] = useState<(typeof competencies)[number] | null>(null);
     const [menu, setMenu] = useState(false);
     const [paused, setPaused] = useState(false);
@@ -299,8 +300,8 @@ export default function Home() {
           <h2>Professional <span>experience.</span></h2>
           <p>Hands-on experience across development,<br />infrastructure, and technical education.</p>
         </div>
-        <ol className="timeline">
-          {experience.map(e => <li key={e.role}>
+        <ol className="timeline" id="experience-list">
+          {experience.slice(0, showAllExperience ? experience.length : 3).map(e => <li key={e.role}>
             <span className="experience-date">
               {e.date}
             </span>
@@ -325,6 +326,10 @@ export default function Home() {
             </div>
           </li>)}
         </ol>
+        {experience.length > 3 && <button className="load-more" onClick={() => setShowAllExperience(!showAllExperience)} aria-expanded={showAllExperience} aria-controls="experience-list">
+          {showAllExperience ? "Show less" : `Load more (${experience.length - 3})`}
+          <ChevronDown size={16}/>
+        </button>}
         <div className="education">
           <div className="education-heading">
             <GraduationCap size={26} strokeWidth={1.5}/>
