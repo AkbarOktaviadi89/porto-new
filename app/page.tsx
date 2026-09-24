@@ -86,10 +86,20 @@ export default function Home() {
             <div className="hero-description">
               <p className="hero-role">Backend developer.<br />Network engineer. Security-minded.<span>I build web applications and the infrastructure<br className="desktop-break"/> that keeps them connected, secure, and reliable.</span></p>
             </div>
-            <a href="#work" className="primary-button">Explore my work <ArrowDown size={18}/></a>
+            <div className="hero-actions">
+              <a href="#work" className="primary-button">Explore my work <ArrowDown size={18}/></a>
+              <a href="/CV-AkbarOktaviadi.pdf" download className="secondary-button">Download CV <Download size={17}/></a>
+            </div>
           </div>
           <div className="scene-shell">
-            <div className="scene-corner top-left">SYSTEM ARCHITECTURE <span>CONCEPTUAL VIEW</span></div>
+            <div className="scene-corner top-left">
+              <span className="scene-title">SYSTEM ARCHITECTURE</span>
+              <div className="mode-options" role="group" aria-label="Focus the diagram on a discipline">
+                {["Backend", "Networking", "Security"].map((v, i) => <button key={v} onClick={() => setMode(i)} aria-pressed={mode === i} className={mode === i ? "selected" : ""}>
+                  {v}
+                </button>)}
+              </div>
+            </div>
             <Scene paused={paused} mode={mode} reset={reset}/>
             <div className="scene-bottom">
               <span>DRAG TO ORBIT · SELECT A NODE</span>
@@ -103,16 +113,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="hero-bottom">
-          <span>FROM APPLICATION TO INFRASTRUCTURE</span>
-          <div className="mode-options" aria-label="Explore an engineering discipline">
-            {["Backend", "Networking", "Security"].map((v, i) => <button key={v} onClick={() => setMode(i)} aria-pressed={mode === i} className={mode === i ? "selected" : ""}>
-              <span>0{i + 1}</span>
-              {v}
-            </button>)}
-          </div>
-          <span className="scroll-hint">SCROLL TO EXPLORE <ArrowDown size={14}/></span>
         </div>
       </section>
       <div className="expertise-ribbon" aria-label="Areas of expertise">
