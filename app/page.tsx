@@ -175,10 +175,6 @@ export default function Home() {
         </div>
       </section>
       <section id="about" className="section about">
-        <div className="about-top">
-          <div className="section-index">01 / THE PERSON</div>
-          <h2>Engineering with context.<br /><span>Learning with purpose.</span></h2>
-        </div>
         <div className="about-content">
           <div className="identity">
             <div className="identity-monogram">a<span>o</span></div>
@@ -186,10 +182,11 @@ export default function Home() {
               <strong>Akbar Oktaviadi</strong>
               <span>Backend Developer & Network Engineer</span>
             </div>
-            <a href="/CV-AkbarOktaviadi.pdf" download target="_blank" rel="noopener noreferrer" className="text-link">Original CV (PDF) <Download size={16}/></a>
+            <a href="/CV-AkbarOktaviadi.pdf" download className="secondary-button">Download CV <Download size={16}/></a>
           </div>
           <div className="about-text">
-            <p>Good digital experiences begin with well-engineered foundations.</p>
+            <h2>Engineering with context.<br /><span>Learning with purpose.</span></h2>
+            <p className="about-lead">Good digital experiences begin with well-engineered foundations.</p>
             <p>I am an Informatics graduate from Universitas Teknokrat Indonesia, focused on web development, Linux system administration, and networking. I bring backend logic, reliable infrastructure, and security thinking together.</p>
             <p>Alongside building systems, I teach programming and computer networking. Sharing knowledge keeps me curious and challenges me to make complex ideas clear.</p>
             <div className="about-facts">
@@ -200,6 +197,10 @@ export default function Home() {
               <div>
                 <strong>6</strong>
                 <span>Certifications & competency awards</span>
+              </div>
+              <div>
+                <strong>2020</strong>
+                <span>MikroTik–APJII Network Olympiad winner</span>
               </div>
             </div>
           </div>

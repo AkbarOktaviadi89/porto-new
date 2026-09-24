@@ -865,29 +865,20 @@ p {
   border-block: 1px solid var(--border);
 }
 
-.about-top {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 55px;
-}
-
-.section-index {
-  font: 11px var(--font-mono);
-  color: #5c6c84;
-  letter-spacing: 1px;
-  padding-top: 12px;
-}
-
-.about-top h2 {
-  font-size: clamp(33px,3.3vw,48px);
-  line-height: 1.2;
-}
-
 .about-content {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 55px;
-  margin-top: 48px;
+}
+
+.identity {
+  position: sticky;
+  top: 130px;
+  align-self: start;
+}
+
+.identity .secondary-button {
+  margin-top: 25px;
 }
 
 .identity-monogram {
@@ -927,23 +918,14 @@ p {
   color: #5f6c7f;
 }
 
-.text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 30px;
-  border-bottom: 1px solid #bac8de;
-  padding-bottom: 10px;
-  font-size: 13px;
-  color: #45699f;
-  margin-top: 25px;
-}
-
-.text-link:hover {
-  color: var(--primary);
-}
-
 .about-text {
   max-width: 720px;
+}
+
+.about-text h2 {
+  font-size: clamp(33px,3.3vw,48px);
+  line-height: 1.2;
+  margin-bottom: 40px;
 }
 
 .about-text>p {
@@ -953,7 +935,7 @@ p {
   margin-bottom: 22px;
 }
 
-.about-text>p:first-child {
+.about-text>.about-lead {
   font-size: 23px;
   line-height: 1.5;
   letter-spacing: -.5px;
@@ -963,7 +945,8 @@ p {
 
 .about-facts {
   display: flex;
-  gap: 75px;
+  flex-wrap: wrap;
+  gap: 30px 64px;
   padding-top: 18px;
 }
 
@@ -971,6 +954,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-width: 190px;
 }
 
 .about-facts strong {
@@ -1877,22 +1861,18 @@ footer>span {
   .security-caption {
     font-size: 10px;
   }
-  .about-top,.about-content {
+  .about-content {
     grid-template-columns: 1fr;
     gap: 25px;
   }
-  .about-top h2 {
+  .about-text h2 {
     font-size: 32px;
     line-height: 1.2;
     letter-spacing: -1.4px;
-  }
-  .section-index {
-    font-size: 10px;
-  }
-  .about-content {
-    margin-top: 30px;
+    margin-bottom: 28px;
   }
   .identity {
+    position: static;
     display: grid;
     grid-template-columns: 85px 1fr;
     gap: 0 23px;
@@ -1913,24 +1893,24 @@ footer>span {
   .identity-caption>span {
     font-size: 11px;
   }
-  .identity .text-link {
-    font-size: 11px;
-    margin-top: 8px;
-    padding-bottom: 4px;
-    width: 148px;
-    gap: 16px;
+  .identity .secondary-button {
+    margin-top: 10px;
+    padding: 9px 12px;
+    font-size: 12px;
+    gap: 12px;
+    width: fit-content;
   }
   .about-text {
     margin-top: 15px;
   }
-  .about-text>p:first-child {
+  .about-text>.about-lead {
     font-size: 21px;
   }
   .about-text>p {
     font-size: 15px;
   }
   .about-facts {
-    gap: 40px;
+    gap: 26px 36px;
   }
   .about-facts strong {
     font-size: 39px;
@@ -2284,7 +2264,7 @@ footer>span {
   .credential-link {
     font-size: 12px;
   }
-  .about-facts>div:last-child {
+  .about-facts>div {
     max-width: 150px;
   }
 }
