@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart, ChevronDown } from "lucide-react";
+import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart, ChevronDown, MapPin } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { BrandMark } from "@/components/brand-mark";
 import { projects, experience, domains, certifications, competencies, education, courses, awards } from "@/lib/portfolio-data";
@@ -169,14 +169,12 @@ export default function Home() {
     </header>
     <main id="main">
       <section id="home" className="hero">
-        <div className="hero-top">
-          <span>AKBAR OKTAVIADI</span>
-          <span>BANDAR LAMPUNG, ID <span className="clock">
-              {time}
-            </span></span>
-        </div>
         <div className="hero-main">
           <div className="hero-copy">
+            <span className="hero-eyebrow">
+              <span className="pulse-dot"/>
+              Currently at PIKO Carwash & Cafe · Algorithmics Global
+            </span>
             <h1>Akbar<br /><span>Oktaviadi.</span></h1>
             <div className="hero-description">
               <p className="hero-role">Web Developer and Coding Mentor.<span>I build web applications and the infrastructure<br className="desktop-break"/> that keeps them connected, secure, and reliable.</span></p>
@@ -185,10 +183,29 @@ export default function Home() {
               <a href="#work" className="primary-button">Explore my work <ArrowDown size={18}/></a>
               <a href="/CV-AkbarOktaviadi.pdf" download className="secondary-button">Download CV <Download size={17}/></a>
             </div>
+            <div className="hero-meta">
+              <div className="hero-stack">
+                <span>Tech I work with</span>
+                <ul>
+                  {["Laravel", "Next.js", "Golang", "PostgreSQL", "Docker", "Linux"].map(t => <li key={t}>
+                    {t}
+                  </li>)}
+                </ul>
+              </div>
+              <div className="hero-socials">
+                <a href="https://github.com/AkbarOktaviadi89" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={14}/></a>
+                <a href="https://www.linkedin.com/in/akbar-oktaviadi/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={14}/></a>
+              </div>
+            </div>
           </div>
           <div className="hero-portrait">
             <div className="portrait-frame">
               <Image src="/img/profile-new.png" alt="Akbar Oktaviadi smiling while working on a laptop" width={940} height={898} sizes="(max-width: 760px) 92vw, 44vw" priority/>
+              <div className="portrait-caption">
+                <MapPin size={15}/>
+                <span>Bandar Lampung, ID</span>
+                <span className="clock">{time}</span>
+              </div>
             </div>
           </div>
         </div>
