@@ -118,7 +118,6 @@ export default function Home() {
     <div className="scroll-progress" ref={progress}/>
     <header className="nav">
       <a className="brand" href="#home" aria-label="Akbar Oktaviadi, home">
-        <BrandMark />
         <span className="brand-name">Portfolio</span>
       </a>
       <nav aria-label="Main navigation" className={menu ? "nav-links open" : "nav-links"}>
