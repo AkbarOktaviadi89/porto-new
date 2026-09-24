@@ -1231,14 +1231,18 @@ p {
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 55px;
+  grid-template-columns: 2fr 1fr;
+  gap: 72px;
 }
 
 .identity {
+  order: 2;
   position: sticky;
   top: 130px;
   align-self: start;
+  justify-self: end;
+  width: 100%;
+  max-width: 340px;
 }
 
 .identity .secondary-button {
@@ -1248,7 +1252,7 @@ p {
 .identity-photo {
   display: block;
   width: 100%;
-  max-width: 280px;
+  max-width: 340px;
   height: auto;
   aspect-ratio: 4/5;
   object-fit: cover;
@@ -2625,7 +2629,10 @@ footer>span {
     margin-bottom: 28px;
   }
   .identity {
+    order: 0;
     position: static;
+    justify-self: stretch;
+    max-width: none;
     display: grid;
     grid-template-columns: 85px 1fr;
     gap: 0 23px;

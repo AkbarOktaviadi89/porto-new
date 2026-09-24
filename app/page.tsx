@@ -157,7 +157,7 @@ export default function Home() {
         {p.tags.join(" / ")}
       </p>
     </button>;
-    const nav = [{ id: "work", name: "Work" }, { id: "about", name: "About" }, { id: "journey", name: "Experience" }, { id: "credentials", name: "Certifications" }, { id: "contact", name: "Contact" }];
+    const nav = [{ id: "about", name: "About" }, { id: "work", name: "Work" }, { id: "journey", name: "Experience" }, { id: "credentials", name: "Certifications" }, { id: "contact", name: "Contact" }];
     return <div className={motion ? "portfolio motion-on" : "portfolio"}>
     <a href="#main" className="skip-link">Skip to content</a>
     <div className="scroll-progress" ref={progress}/>
@@ -228,19 +228,6 @@ export default function Home() {
           </ul>)}
         </div>
       </div>
-      <section id="work" className="section works">
-        <div className="section-heading">
-          <h2>Selected <span>work.</span></h2>
-          <p>Products running in production, plus earlier<br />work in backend systems and security.</p>
-        </div>
-        <div className="projects projects-live">
-          {projects.map((p, i) => p.domain && projectCard(p, i))}
-        </div>
-        <h3 className="projects-subheading">Earlier projects</h3>
-        <div className="projects">
-          {projects.map((p, i) => !p.domain && projectCard(p, i))}
-        </div>
-      </section>
       <section id="about" className="section about">
         <div className="about-content">
           <div className="identity">
@@ -293,6 +280,19 @@ export default function Home() {
               </span>)}
             </div>
           </article>)}
+        </div>
+      </section>
+      <section id="work" className="section works">
+        <div className="section-heading">
+          <h2>Selected <span>work.</span></h2>
+          <p>Products running in production, plus earlier<br />work in backend systems and security.</p>
+        </div>
+        <div className="projects projects-live">
+          {projects.map((p, i) => p.domain && projectCard(p, i))}
+        </div>
+        <h3 className="projects-subheading">Earlier projects</h3>
+        <div className="projects">
+          {projects.map((p, i) => !p.domain && projectCard(p, i))}
         </div>
       </section>
       <section id="journey" className="section journey">
