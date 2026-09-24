@@ -1,6 +1,6 @@
 import { Code2, GraduationCap, ShieldCheck } from "lucide-react";
 type ProjectLink = { label: string; href: string };
-type Project = { name: string; category: string; year: string; type: "creator" | "queue" | "inventory" | "learning" | "shop" | "tracker" | "web" | "api" | "security"; domain?: string; desc: string; tags: string[]; role: string; scope: string[]; links: ProjectLink[] };
+type Project = { name: string; category: string; year: string; type: "creator" | "queue" | "inventory" | "learning" | "shop" | "tracker" | "paper" | "web" | "api" | "security"; domain?: string; desc: string; tags: string[]; role: string; scope: string[]; links: ProjectLink[] };
 // Projects with a domain are live products and are listed first.
 export const projects: Project[] = [
     {
@@ -29,6 +29,9 @@ export const projects: Project[] = [
     },
     {
         name: "Badstore Pentest", category: "Security assessment", year: "2024", type: "security", desc: "A penetration test of the Badstore training web app, from vulnerability discovery to a risk-rated report with remediation advice.", tags: ["Burp Suite", "OWASP ZAP", "Pentest"], role: "Penetration Tester", scope: ["Tested the Badstore website to identify security vulnerabilities.", "Assessed the application with Burp Suite and OWASP ZAP.", "Wrote and presented a report covering findings, risk assessment, and remediation recommendations."], links: []
+    },
+    {
+        name: "Centralized Wireless Network", category: "Paper · Networking", year: "2020", type: "paper", desc: "A paper on designing and implementing a centrally managed wireless network for a company, focused on scalability, security, and easy monitoring.", tags: ["Wireless", "Network design", "Paper"], role: "Author", scope: ["Designed and implemented a centrally managed wireless network to support company operations.", "Used network devices and management systems for scalability, security, and easy monitoring.", "Tuned access point configuration for stable, secure coverage across the work area."], links: []
     }
 ];
 export const experience = [
@@ -110,5 +113,22 @@ export const awards = [
     },
     {
         place: "Appreciation", title: "Metaverse School of SMA Al-Kautsar", issuer: "SMA Al-Kautsar Bandar Lampung", date: "AUG 2024", image: "/credentials/award-metaverse-school-al-kautsar-2024.jpg", width: 2568, height: 1824, alt: "Certificate of appreciation to Akbar Oktaviadi for contributions to the Metaverse School of SMA Al-Kautsar"
+    }
+];
+export const teaching = [
+    {
+        org: "Algorithmics Global", role: "Coding teacher", audience: "Kids", date: "2025 — now", topics: ["Roblox Studio", "Python", "Visual programming"], desc: "Game development and Python fundamentals, built around design, creativity, and problem solving."
+    },
+    {
+        org: "Universitas Teknokrat Indonesia", role: "Teaching assistant", audience: "University", date: "2023 — 2025", topics: ["Networking", "Programming"], desc: "Supported networking and programming courses, guided discussions, and led occasional sessions."
+    },
+    {
+        org: "Universitas Teknokrat Indonesia", role: "Network systems tutor", audience: "University", date: "2023 — 2024", topics: ["Networking", "Network security"], desc: "Theory and hands-on training in computer networking and network security for student members."
+    },
+    {
+        org: "Vocational high school", role: "MikroTik instructor", audience: "Vocational", date: "2022", topics: ["MTCNA", "Routing", "Wireless", "Firewall"], desc: "MTCNA material covering routing, bridging, wireless, and firewall, with hands-on MikroTik configuration."
+    },
+    {
+        org: "BLC Pesawaran", role: "MTCNA trainer", audience: "Adults", date: "2019 — 2020", topics: ["MTCNA", "MikroTik"], desc: "Taught MTCNA topics alongside network administration work."
     }
 ];

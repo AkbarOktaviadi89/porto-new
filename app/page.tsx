@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart, ChevronDown, MapPin } from "lucide-react";
+import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart, ChevronDown, MapPin, Network, Wifi } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { BrandMark } from "@/components/brand-mark";
-import { projects, experience, domains, certifications, competencies, education, courses, awards } from "@/lib/portfolio-data";
+import { projects, experience, domains, certifications, competencies, education, courses, awards, teaching } from "@/lib/portfolio-data";
 export default function Home() {
     const [project, setProject] = useState<number | null>(null);
     const [showAllExperience, setShowAllExperience] = useState(false);
@@ -121,6 +121,12 @@ export default function Home() {
             </div>)}
           </div>
           <div className="art-caption">WRITEUPS · TOOLS · CHEATSHEETS</div>
+        </div> : p.type === "paper" ? <div className="paper-art">
+          <div className="paper-net" aria-hidden="true">
+            <span className="paper-core"><Network size={22}/></span>
+            {[0, 1, 2, 3].map(k => <span key={k} className={`paper-ap ap-${k}`}><Wifi size={15}/></span>)}
+          </div>
+          <div className="art-caption">CENTRALLY MANAGED WIRELESS</div>
         </div> : p.type === "web" ? <div className="meta-art">
           <span className="meta-word">meta<span>tekno</span></span>
           <div className="meta-coordinate">THREE.JS EXPERIENCE / LARAVEL CMS</div>
@@ -159,7 +165,7 @@ export default function Home() {
         {p.tags.join(" / ")}
       </p>
     </button>;
-    const nav = [{ id: "about", name: "About" }, { id: "work", name: "Work" }, { id: "journey", name: "Experience" }, { id: "credentials", name: "Certifications" }, { id: "contact", name: "Contact" }];
+    const nav = [{ id: "about", name: "About" }, { id: "work", name: "Work" }, { id: "teaching", name: "Teaching" }, { id: "journey", name: "Experience" }, { id: "credentials", name: "Certifications" }, { id: "contact", name: "Contact" }];
     return <div className={motion ? "portfolio motion-on" : "portfolio"}>
     <a href="#main" className="skip-link">Skip to content</a>
     <div className="scroll-progress" ref={progress}/>
@@ -281,8 +287,39 @@ export default function Home() {
           {projects.map((p, i) => p.domain && projectCard(p, i))}
         </div>
         <h3 className="projects-subheading">More projects</h3>
-        <div className="projects">
+        <div className="projects projects-more">
           {projects.map((p, i) => !p.domain && projectCard(p, i))}
+        </div>
+      </section>
+      <section id="teaching" className="section teaching">
+        <div className="section-heading">
+          <h2>Teaching & <span>mentoring.</span></h2>
+          <p>From kids writing their first game<br />to university networking labs.</p>
+        </div>
+        <div className="teaching-layout">
+          <div className="teaching-intro">
+            <p>I teach the way I build: start from a real problem, get hands-on quickly, and explain the why behind every step.</p>
+            <div className="teaching-audience">
+              {["Kids", "Vocational students", "University students", "Adults"].map(a => <span key={a}>{a}</span>)}
+            </div>
+            <div className="teaching-topics">
+              <span>Topics I teach</span>
+              <div className="tags">
+                {Array.from(new Set(teaching.flatMap(t => t.topics))).map(t => <span key={t}>{t}</span>)}
+              </div>
+            </div>
+          </div>
+          <ol className="teaching-list">
+            {teaching.map(t => <li key={t.role + t.date}>
+              <div className="teaching-top">
+                <span className="teaching-audience-badge">{t.audience}</span>
+                <span className="teaching-date">{t.date}</span>
+              </div>
+              <h3>{t.role}</h3>
+              <p className="teaching-org">{t.org}</p>
+              <p className="teaching-desc">{t.desc}</p>
+            </li>)}
+          </ol>
         </div>
       </section>
       <section id="journey" className="section journey">
