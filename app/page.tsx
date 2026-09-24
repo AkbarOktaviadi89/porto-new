@@ -190,27 +190,6 @@ export default function Home() {
             <div className="portrait-frame">
               <Image src="/img/profile-new.png" alt="Akbar Oktaviadi smiling while working on a laptop" width={940} height={898} sizes="(max-width: 760px) 92vw, 44vw" priority/>
             </div>
-            <div className="float-badge badge-live">
-              <span className="badge-dot"/>
-              <div>
-                <strong>{projects.filter(p => p.domain).length} live products</strong>
-                <small>jeon.id · noodu.id · kubbahari</small>
-              </div>
-            </div>
-            <div className="float-badge badge-mentor">
-              <span className="badge-icon"><GraduationCap size={18}/></span>
-              <div>
-                <strong>Coding Mentor</strong>
-                <small>Algorithmics Global</small>
-              </div>
-            </div>
-            <div className="float-badge badge-cert">
-              <span className="badge-icon"><ShieldCheck size={18}/></span>
-              <div>
-                <strong>CEH · CTIA</strong>
-                <small>EC-Council certified</small>
-              </div>
-            </div>
           </div>
         </div>
       </section>

@@ -373,98 +373,8 @@ p {
   object-position: 50% 22%;
 }
 
-.float-badge {
-  position: absolute;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  padding: 11px 15px 11px 12px;
-  border: 1px solid #dde5f0;
-  border-radius: 14px;
-  background: #ffffffeb;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 14px 30px #1f3a6a1f;
-  white-space: nowrap;
-}
-
-.float-badge>div {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.float-badge strong {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -.2px;
-  color: #182331;
-}
-
-.float-badge small {
-  font: 10px var(--font-mono);
-  color: #5c6c83;
-}
-
-.badge-icon {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
-  background: #eef3fe;
-  color: #2d5eea;
-}
-
-.badge-cert .badge-icon {
-  background: #ecf8f1;
-  color: #1d7a4c;
-}
-
-.badge-dot {
-  width: 10px;
-  height: 10px;
-  margin: 0 4px 0 6px;
-  border-radius: 50%;
-  background: #2d9d66;
-  box-shadow: 0 0 0 5px #2d9d6624;
-}
-
-.badge-live {
-  top: 8%;
-  left: -64px;
-}
-
-.badge-mentor {
-  top: 46%;
-  right: -52px;
-}
-
-.badge-cert {
-  bottom: 9%;
-  left: -40px;
-}
-
 .motion-on .hero-portrait {
   animation: enter .9s .1s both;
-}
-
-.motion-on .float-badge {
-  animation: float 6s ease-in-out infinite;
-}
-
-.motion-on .badge-mentor {
-  animation-delay: -2s;
-}
-
-.motion-on .badge-cert {
-  animation-delay: -4s;
-}
-
-@keyframes float {
-  50% {
-    transform: translateY(-8px);
-  }
 }
 
 .secondary-button {
@@ -2285,31 +2195,6 @@ footer>span {
   .portrait-frame {
     aspect-ratio: 4/4.2;
     border-radius: 18px;
-  }
-  .float-badge {
-    padding: 9px 12px 9px 10px;
-    gap: 9px;
-    border-radius: 12px;
-  }
-  .float-badge strong {
-    font-size: 13px;
-  }
-  .badge-icon {
-    width: 30px;
-    height: 30px;
-  }
-  .badge-live {
-    top: -14px;
-    left: -12px;
-  }
-  .badge-mentor {
-    top: auto;
-    bottom: 64px;
-    right: -12px;
-  }
-  .badge-cert {
-    bottom: -18px;
-    left: -12px;
   }
   .hero-copy {
     padding: 15px 0 0;
