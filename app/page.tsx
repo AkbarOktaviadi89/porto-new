@@ -63,7 +63,10 @@ export default function Home() {
     <a href="#main" className="skip-link">Skip to content</a>
     <div className="scroll-progress" ref={progress}/>
     <header className="nav">
-      <a className="brand" href="#home" aria-label="Akbar Oktaviadi, home">ao<span>.</span></a>
+      <a className="brand" href="#home" aria-label="Akbar Oktaviadi, home">
+        <span className="brand-mark" aria-hidden="true">ao<i /></span>
+        <span className="brand-name">Akbar Oktaviadi</span>
+      </a>
       <nav aria-label="Main navigation" className={menu ? "nav-links open" : "nav-links"}>
         {nav.map(n => <a key={n.id} className={active === n.id ? "active" : ""} href={`#${n.id}`} onClick={() => setMenu(false)}>
           {n.name}
@@ -369,7 +372,9 @@ export default function Home() {
       </section>
     </main>
     <footer>
-      <a className="brand" href="#home">ao<span>.</span></a>
+      <a className="brand" href="#home" aria-label="Akbar Oktaviadi, back to top">
+        <span className="brand-mark" aria-hidden="true">ao<i /></span>
+      </a>
       <span>© {new Date().getFullYear()} Akbar Oktaviadi</span>
       <div className="socials">
         <a href="https://github.com/AkbarOktaviadi89" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={16}/></a>
