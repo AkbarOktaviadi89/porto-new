@@ -265,8 +265,8 @@ export default function Home() {
                 <span>Certifications & competency awards</span>
               </div>
               <div>
-                <strong>2020</strong>
-                <span>MikroTik–APJII Network Olympiad winner</span>
+                <strong>{projects.length}</strong>
+                <span>Projects completed, {projects.filter(p => p.domain).length} live in production</span>
               </div>
             </div>
           </div>
