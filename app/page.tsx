@@ -59,6 +59,59 @@ export default function Home() {
             window.location.href = "mailto:akbaroktaviadi89@gmail.com";
         }
     }
+    const projectCard = (p: (typeof projects)[number], i: number) => <button key={p.name} className={`project-card ${p.type === "live" ? "is-live" : ""}`} onClick={() => setProject(i)}>
+      <div className={`project-art art-${p.type}`}>
+        {p.type === "live" ? <div className="live-art">
+          <div className="browser-bar">
+            <span className="browser-dots"><i /><i /><i /></span>
+            <span className="browser-url">{p.domain}</span>
+          </div>
+          <Image src={p.image!} alt={`Screenshot of ${p.name}`} width={1200} height={750} sizes="(max-width: 760px) 90vw, 45vw"/>
+        </div> : <>
+          <div className="art-top">
+            <span>
+              {p.category}
+            </span>
+          </div>
+          {p.type === "web" ? <div className="meta-art">
+            <span className="meta-word">meta<span>tekno</span></span>
+            <div className="meta-coordinate">THREE.JS EXPERIENCE / LARAVEL CMS</div>
+            <div className="meta-caption">EXPLORE ANOTHER DIMENSION</div>
+          </div> : p.type === "api" ? <div className="api-art">
+            <span className="code-line"><b>JAVA</b> RESTful architecture</span>
+            <div className="api-flow">
+              <span>USER</span>
+              <ArrowRight size={20}/>
+              <span className="api-core">bytecode<span>REST API</span></span>
+              <ArrowRight size={20}/>
+              <span>DATA</span>
+            </div>
+            <div className="code-response">Learners <span>· Courses · Progress</span></div>
+          </div> : <div className="security-art">
+            <ShieldCheck size={92} strokeWidth={.7}/>
+            <span className="security-title">Trust, verified.</span>
+            <span className="security-caption">ASSESS → ANALYZE → MITIGATE</span>
+          </div>}
+          <span className="project-number">{String(i + 1).padStart(2, "0")} / PROJECT</span>
+          <span className="project-open">View details <Plus size={16}/></span>
+        </>}
+      </div>
+      <div className="project-info">
+        <h3>
+          {p.name}
+          {p.type === "live" && <span className="live-badge">Live</span>}
+        </h3>
+        <span>
+          {p.year}
+        </span>
+      </div>
+      {p.type === "live" && <p className="project-desc">
+        {p.desc}
+      </p>}
+      <p className="project-sub">
+        {p.tags.join(" / ")}
+      </p>
+    </button>;
     const nav = [{ id: "work", name: "Work" }, { id: "about", name: "About" }, { id: "journey", name: "Experience" }, { id: "credentials", name: "Certifications" }, { id: "contact", name: "Contact" }];
     return <div className={motion ? "portfolio motion-on" : "portfolio"}>
     <a href="#main" className="skip-link">Skip to content</a>
@@ -66,7 +119,7 @@ export default function Home() {
     <header className="nav">
       <a className="brand" href="#home" aria-label="Akbar Oktaviadi, home">
         <BrandMark />
-        <span className="brand-name">Akbar Oktaviadi</span>
+        <span className="brand-name">Portfolio</span>
       </a>
       <nav aria-label="Main navigation" className={menu ? "nav-links open" : "nav-links"}>
         {nav.map(n => <a key={n.id} className={active === n.id ? "active" : ""} href={`#${n.id}`} onClick={() => setMenu(false)}>
@@ -90,7 +143,7 @@ export default function Home() {
           <div className="hero-copy">
             <h1>Akbar<br /><span>Oktaviadi.</span></h1>
             <div className="hero-description">
-              <p className="hero-role">Web developer.<br />Network engineer. Security-minded.<span>I build web applications and the infrastructure<br className="desktop-break"/> that keeps them connected, secure, and reliable.</span></p>
+              <p className="hero-role">Web Developer and Coding Mentor.<span>I build web applications and the infrastructure<br className="desktop-break"/> that keeps them connected, secure, and reliable.</span></p>
             </div>
             <div className="hero-actions">
               <a href="#work" className="primary-button">Explore my work <ArrowDown size={18}/></a>
@@ -134,50 +187,14 @@ export default function Home() {
       <section id="work" className="section works">
         <div className="section-heading">
           <h2>Selected <span>work.</span></h2>
-          <p>Selected projects across web development,<br />backend systems, and security assessment.</p>
+          <p>Products running in production, plus earlier<br />work in backend systems and security.</p>
         </div>
+        <div className="projects projects-live">
+          {projects.map((p, i) => p.type === "live" && projectCard(p, i))}
+        </div>
+        <h3 className="projects-subheading">Earlier projects</h3>
         <div className="projects">
-          {projects.map((p, i) => <button key={p.name} className={`project-card project-${i}`} onClick={() => setProject(i)}>
-            <div className={`project-art art-${p.type}`}>
-              <div className="art-top">
-                <span>
-                  {p.category}
-                </span>
-              </div>
-              {i === 0 ? <div className="meta-art">
-                <span className="meta-word">meta<span>tekno</span></span>
-                <div className="meta-coordinate">THREE.JS EXPERIENCE / LARAVEL CMS</div>
-                <div className="meta-caption">EXPLORE ANOTHER DIMENSION</div>
-              </div> : i === 1 ? <div className="api-art">
-                <span className="code-line"><b>JAVA</b> RESTful architecture</span>
-                <div className="api-flow">
-                  <span>USER</span>
-                  <ArrowRight size={20}/>
-                  <span className="api-core">bytecode<span>REST API</span></span>
-                  <ArrowRight size={20}/>
-                  <span>DATA</span>
-                </div>
-                <div className="code-response">Learners <span>· Courses · Progress</span></div>
-              </div> : <div className="security-art">
-                <ShieldCheck size={92} strokeWidth={.7}/>
-                <span className="security-title">Trust, verified.</span>
-                <span className="security-caption">ASSESS → ANALYZE → MITIGATE</span>
-              </div>}
-              <span className="project-number">0{i + 1} / PROJECT</span>
-              <span className="project-open">View details <Plus size={16}/></span>
-            </div>
-            <div className="project-info">
-              <h3>
-                {p.name}
-              </h3>
-              <span>
-                {p.year}
-              </span>
-            </div>
-            <p className="project-sub">
-              {p.tags.join(" / ")}
-            </p>
-          </button>)}
+          {projects.map((p, i) => p.type !== "live" && projectCard(p, i))}
         </div>
       </section>
       <section id="about" className="section about">
@@ -186,7 +203,7 @@ export default function Home() {
             <Image className="identity-photo" src="/img/profile-new.png" alt="Akbar Oktaviadi smiling while working on a laptop" width={940} height={898} sizes="(max-width: 760px) 85px, 280px"/>
             <div className="identity-caption">
               <strong>Akbar Oktaviadi</strong>
-              <span>Web Developer & Network Engineer</span>
+              <span>Web Developer & Coding Mentor</span>
             </div>
             <a href="/CV-AkbarOktaviadi.pdf" download className="secondary-button">Download CV <Download size={16}/></a>
           </div>
@@ -414,6 +431,7 @@ export default function Home() {
         }}>
       <DialogContent className="project-dialog">
         {project !== null && <>
+          {projects[project].image && <Image className="dialog-shot" src={projects[project].image!} alt={`Screenshot of ${projects[project].name}`} width={1200} height={750} sizes="650px"/>}
           <span className="dialog-meta">{projects[project].category} / {projects[project].year}</span>
           <DialogTitle className="dialog-title">
             {projects[project].name}

@@ -660,6 +660,127 @@ p {
   min-width: 0;
 }
 
+.projects-live {
+  grid-template-columns: repeat(2,1fr);
+  gap: 40px 28px;
+}
+
+.projects-subheading {
+  margin: 72px 0 24px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: -.6px;
+  color: #182331;
+}
+
+.project-card.is-live .project-art {
+  height: auto;
+  aspect-ratio: 16/10.6;
+  background: #e9edf4;
+}
+
+.live-art {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 34px;
+  padding: 0 14px;
+  background: #fff;
+  border-bottom: 1px solid #dce3eb;
+}
+
+.browser-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.browser-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d5dde8;
+}
+
+.browser-url {
+  flex: 1;
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: #f1f4f8;
+  font: 11px var(--font-mono);
+  color: #5c6c83;
+  text-align: center;
+}
+
+.live-art img {
+  display: block;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  object-fit: cover;
+  object-position: top;
+  transition: transform .5s;
+}
+
+.project-card.is-live:hover .live-art img {
+  transform: scale(1.02);
+}
+
+.project-info h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border: 1px solid #bfe3cf;
+  border-radius: 99px;
+  background: #ecf8f1;
+  color: #1d7a4c;
+  font: 500 10px var(--font-mono);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.live-badge:before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2d9d66;
+}
+
+.project-desc {
+  margin-top: 8px;
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #586c88;
+}
+
+.dialog-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
 .project-art {
   height: 290px;
   position: relative;
@@ -2097,9 +2218,13 @@ footer>span {
     margin-top: 18px;
     font-size: 13px;
   }
-  .projects {
+  .projects,.projects-live {
     grid-template-columns: 1fr;
     gap: 34px;
+  }
+  .projects-subheading {
+    margin-top: 52px;
+    font-size: 21px;
   }
   .project-art {
     height: 300px;

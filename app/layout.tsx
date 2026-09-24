@@ -4,8 +4,8 @@ import "./globals.css";
 const sans = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap" });
 export const metadata: Metadata = {
-    title: "Akbar Oktaviadi — Web Development, Networks & Cybersecurity",
-    description: "Akbar Oktaviadi is a web developer, network engineer, and cybersecurity enthusiast based in Bandar Lampung, Indonesia. Explore selected projects, professional experience, and certifications.",
+    title: "Akbar Oktaviadi — Web Developer and Coding Mentor",
+    description: "Akbar Oktaviadi is a web developer and coding mentor based in Bandar Lampung, Indonesia, with a background in networking and cybersecurity. Explore selected projects, professional experience, and certifications.",
     icons: {
         icon: "/favicon.svg",
         shortcut: "/favicon.svg",
