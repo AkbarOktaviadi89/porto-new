@@ -52,3 +52,11 @@ export const certifications = [{
     }, {
         code: "MTCNA", name: "MikroTik Certified Network Associate", org: "MikroTik", date: "OCT 2020", credential: "2010NA4308", url: "https://mikrotik.com/training/certificates/c194308ce66b4a5988f7"
     }];
+export const competencies = [
+    {
+        title: "Junior Network Technician", date: "JUNE 10, 2023", image: "/credentials/junior-network-technician.jpg", desc: "Passed the university’s competence-based assessment in network technology.", alt: "Certificate of Competence awarded to Akbar Oktaviadi as a Junior Network Technician on June 10, 2023"
+    },
+    {
+        title: "Junior Mobile Application Programmer", date: "JUNE 10, 2023", image: "/credentials/junior-mobile-application-programmer.jpg", desc: "Passed the university’s competence-based assessment in mobile application programming.", alt: "Certificate of Competence awarded to Akbar Oktaviadi as a Junior Mobile Application Programmer on June 10, 2023"
+    }
+];

@@ -1,11 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus } from "lucide-react";
+import { ArrowUpRight, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Scene from "./scene";
-import { projects, experience, domains, certifications } from "@/lib/portfolio-data";
+import { projects, experience, domains, certifications, competencies } from "@/lib/portfolio-data";
 export default function Home() {
     const [project, setProject] = useState<number | null>(null);
+    const [certificate, setCertificate] = useState<(typeof competencies)[number] | null>(null);
     const [menu, setMenu] = useState(false);
     const [paused, setPaused] = useState(false);
     const [mode, setMode] = useState(0);
@@ -297,11 +298,13 @@ export default function Home() {
             <h3>
               {c.name}
             </h3>
-            <span className="cert-org">
-              {c.org}
-            </span>
-            {c.url && <a className="credential-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`View ${c.code} certificate`}>View certificate <ArrowUpRight size={14}/></a>}
-            {c.credential && <span className="credential-id">ID {c.credential} · Issued in 2020</span>}
+            {c.credential && <span className="credential-id">ID {c.credential}</span>}
+            <div className="cert-footer">
+              <span className="cert-org">
+                {c.org}
+              </span>
+              {c.url && <a className="credential-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`Verify ${c.code} certificate`}>Verify <ArrowUpRight size={14}/></a>}
+            </div>
           </article>)}
         </div>
         <div className="competencies">
@@ -313,39 +316,30 @@ export default function Home() {
             <a href="https://www.linkedin.com/posts/akbar-oktaviadi_happy-to-be-able-to-obtain-a-competency-certificate-activity-7103346463262314496-UM3P" target="_blank" rel="noopener noreferrer">View LinkedIn post <ArrowUpRight size={15}/></a>
           </div>
           <div className="competency-grid">
-            <a className="competency-card" href="/credentials/junior-network-technician.jpg" target="_blank" rel="noopener noreferrer">
+            {competencies.map(c => <button key={c.image} className="competency-card" onClick={() => setCertificate(c)}>
               <div className="competency-preview">
-                <img src="/credentials/junior-network-technician.jpg" alt="Certificate of Competence awarded to Akbar Oktaviadi as a Junior Network Technician on June 10, 2023" width="800" height="565" loading="lazy"/>
+                <img src={c.image} alt={c.alt} width="800" height="565" loading="lazy"/>
               </div>
               <div className="competency-info">
-                <span>JUNE 10, 2023</span>
-                <h4>Junior Network Technician</h4>
-                <p>Passed the university’s competence-based assessment in network technology.</p>
-                <span className="competency-cta">View certificate <ArrowUpRight size={16}/></span>
+                <span>{c.date}</span>
+                <h4>{c.title}</h4>
+                <p>{c.desc}</p>
+                <span className="competency-cta">View certificate <Maximize2 size={15}/></span>
               </div>
-            </a>
-            <a className="competency-card" href="/credentials/junior-mobile-application-programmer.jpg" target="_blank" rel="noopener noreferrer">
-              <div className="competency-preview">
-                <img src="/credentials/junior-mobile-application-programmer.jpg" alt="Certificate of Competence awarded to Akbar Oktaviadi as a Junior Mobile Application Programmer on June 10, 2023" width="800" height="565" loading="lazy"/>
-              </div>
-              <div className="competency-info">
-                <span>JUNE 10, 2023</span>
-                <h4>Junior Mobile Application Programmer</h4>
-                <p>Passed the university’s competence-based assessment in mobile application programming.</p>
-                <span className="competency-cta">View certificate <ArrowUpRight size={16}/></span>
-              </div>
-            </a>
+            </button>)}
           </div>
         </div>
         <div className="recognitions">
           <span>RECOGNITION</span>
           <div>
+            <Award size={22} strokeWidth={1.5}/>
             <h3>Work of Innovation in Metaverse Development</h3>
             <p>Universitas Teknokrat Indonesia · March 2024</p>
             <a className="credential-link" href="https://www.linkedin.com/posts/akbar-oktaviadi_thrilled-to-receive-the-work-of-innovation-activity-7184038223864631297-MGN9" target="_blank" rel="noopener noreferrer">View award announcement <ArrowUpRight size={14}/></a>
           </div>
           <div>
-            <h3>MIKROTIK–APJII Network Olympiad 2020 Winner</h3>
+            <Trophy size={22} strokeWidth={1.5}/>
+            <h3>MikroTik–APJII Network Olympiad 2020 Winner</h3>
             <p>Indonesian Internet Service Providers Association</p>
           </div>
         </div>
@@ -432,6 +426,27 @@ export default function Home() {
               <ArrowRight size={16}/>
             </button>
           </nav>
+        </>}
+      </DialogContent>
+    </Dialog>
+    <Dialog open={certificate !== null} onOpenChange={v => {
+            if (!v)
+                setCertificate(null);
+        }}>
+      <DialogContent className="certificate-dialog">
+        {certificate && <>
+          <div className="certificate-caption">
+            <div>
+              <DialogTitle className="certificate-title">
+                {certificate.title}
+              </DialogTitle>
+              <DialogDescription className="certificate-meta">
+                Universitas Teknokrat Indonesia · {certificate.date}
+              </DialogDescription>
+            </div>
+            <a href={certificate.image} target="_blank" rel="noopener noreferrer">Open full size <ArrowUpRight size={15}/></a>
+          </div>
+          <img src={certificate.image} alt={certificate.alt} width="800" height="565"/>
         </>}
       </DialogContent>
     </Dialog>
