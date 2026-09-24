@@ -234,10 +234,6 @@ export default function Home() {
                 <span>GPA · Bachelor of Informatics</span>
               </div>
               <div>
-                <strong>{yearsSince(2019, 10)}+<span> yrs</span></strong>
-                <span>Hands-on in IT, since networking work in 2019</span>
-              </div>
-              <div>
                 <strong>{yearsSince(2023, 1)}+<span> yrs</span></strong>
                 <span>Teaching programming and computer networking</span>
               </div>
