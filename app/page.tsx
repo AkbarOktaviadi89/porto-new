@@ -233,27 +233,32 @@ export default function Home() {
           <h2>Professional <span>experience.</span></h2>
           <p>Hands-on experience across development,<br />infrastructure, and technical education.</p>
         </div>
-        <div className="timeline">
-          {experience.map((e, i) => <details key={e.role} open={i === 1 ? true : undefined}>
-            <summary>
-              <span className="experience-date">
-                {e.date}
-              </span>
-              <div>
+        <ol className="timeline">
+          {experience.map(e => <li key={e.role}>
+            <span className="experience-date">
+              {e.date}
+            </span>
+            <div className="experience-body">
+              <div className="experience-head">
                 <h3>
                   {e.role}
                 </h3>
-                <p>
-                  {e.company}
-                </p>
+                {e.date.includes("PRESENT") && <span className="current-badge">Current</span>}
               </div>
-              <Plus size={22}/>
-            </summary>
-            <div className="experience-desc">
-              {e.desc}
+              <p className="experience-company">
+                {e.company}
+              </p>
+              <p className="experience-desc">
+                {e.desc}
+              </p>
+              <div className="tags">
+                {e.tags.map(t => <span key={t}>
+                  {t}
+                </span>)}
+              </div>
             </div>
-          </details>)}
-        </div>
+          </li>)}
+        </ol>
         <div className="education">
           <div className="education-title">
             <GraduationCap size={28}/>

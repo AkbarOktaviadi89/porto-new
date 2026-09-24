@@ -14,22 +14,22 @@ export const projects: { name: string; category: string; year: string; type: str
 ];
 export const experience = [
     {
-        date: "NOV 2025 — PRESENT", role: "Teacher", company: "Algorithmics Global", desc: "Teach game development with Roblox Studio, Python fundamentals, and visual programming, helping students develop creativity and problem-solving skills."
+        date: "NOV 2025 — PRESENT", role: "Teacher", company: "Algorithmics Global", desc: "Teach game development with Roblox Studio, Python fundamentals, and visual programming, helping students develop creativity and problem-solving skills.", tags: ["Roblox Studio", "Python", "Visual programming"]
     },
     {
-        date: "AUG 2025 — PRESENT", role: "Web Programmer & System Administrator", company: "PIKO Carwash & Cafe", desc: "Develop business applications, administer servers and deployments, integrate APIs, and manage firewalls, SSL, databases, backups, and disaster recovery."
+        date: "AUG 2025 — PRESENT", role: "Web Programmer & System Administrator", company: "PIKO Carwash & Cafe", desc: "Develop business applications, administer servers and deployments, integrate APIs, and manage firewalls, SSL, databases, backups, and disaster recovery.", tags: ["Web applications", "Linux servers", "API integration", "Firewall & SSL", "Backups"]
     },
     {
-        date: "DEC 2024 — MAR 2025", role: "IT Support Technician Intern", company: "Diskominfo Pesawaran", desc: "Supported hardware installation and maintenance, troubleshot LAN and internet connectivity, and contributed to website development using Laravel."
+        date: "DEC 2024 — MAR 2025", role: "IT Support Technician Intern", company: "Diskominfo Pesawaran", desc: "Supported hardware installation and maintenance, troubleshot LAN and internet connectivity, and contributed to website development using Laravel.", tags: ["Hardware support", "LAN troubleshooting", "Laravel"]
     },
     {
-        date: "JUL 2023 — JAN 2025", role: "Teaching Assistant", company: "Universitas Teknokrat Indonesia", desc: "Supported networking and programming lectures, guided discussions, and helped students understand complex technical concepts."
+        date: "JUL 2023 — JAN 2025", role: "Teaching Assistant", company: "Universitas Teknokrat Indonesia", desc: "Supported networking and programming lectures, guided discussions, and helped students understand complex technical concepts.", tags: ["Networking", "Programming"]
     },
     {
-        date: "FEB 2023 — OCT 2024", role: "Network Systems Tutor", company: "Universitas Teknokrat Indonesia", desc: "Delivered practical and theoretical training in computer networking and network security."
+        date: "FEB 2023 — OCT 2024", role: "Network Systems Tutor", company: "Universitas Teknokrat Indonesia", desc: "Delivered practical and theoretical training in computer networking and network security.", tags: ["Computer networking", "Network security"]
     },
     {
-        date: "NOV 2019 — MAR 2020", role: "Network Administrator", company: "BLC Pesawaran", desc: "Taught MTCNA topics, installed client Wi-Fi networks, and resolved network and server issues."
+        date: "NOV 2019 — MAR 2020", role: "Network Administrator", company: "BLC Pesawaran", desc: "Taught MTCNA topics, installed client Wi-Fi networks, and resolved network and server issues.", tags: ["MikroTik (MTCNA)", "Wi-Fi installation", "Server troubleshooting"]
     }
 ];
 export const domains = [
