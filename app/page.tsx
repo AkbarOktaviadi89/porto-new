@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Scene from "./scene";
+import { BrandMark } from "@/components/brand-mark";
 import { projects, experience, domains, certifications, competencies } from "@/lib/portfolio-data";
 export default function Home() {
     const [project, setProject] = useState<number | null>(null);
@@ -64,7 +65,7 @@ export default function Home() {
     <div className="scroll-progress" ref={progress}/>
     <header className="nav">
       <a className="brand" href="#home" aria-label="Akbar Oktaviadi, home">
-        <span className="brand-mark" aria-hidden="true">ao<i /></span>
+        <BrandMark />
         <span className="brand-name">Akbar Oktaviadi</span>
       </a>
       <nav aria-label="Main navigation" className={menu ? "nav-links open" : "nav-links"}>
@@ -373,7 +374,7 @@ export default function Home() {
     </main>
     <footer>
       <a className="brand" href="#home" aria-label="Akbar Oktaviadi, back to top">
-        <span className="brand-mark" aria-hidden="true">ao<i /></span>
+        <BrandMark />
       </a>
       <span>© {new Date().getFullYear()} Akbar Oktaviadi</span>
       <div className="socials">

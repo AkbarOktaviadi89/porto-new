@@ -156,34 +156,27 @@ p {
 }
 
 .brand-mark {
-  display: inline-flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 2px;
+  display: block;
   width: 38px;
   height: 38px;
-  padding-bottom: 12px;
-  border-radius: 9px;
-  background: #182331;
-  color: #fff;
-  font: 600 16px/1 var(--font-mono);
-  letter-spacing: -.5px;
-  transition: background .2s;
 }
 
-.brand-mark i {
-  width: 7px;
-  height: 2px;
-  margin-bottom: 1px;
-  background: #6f9bff;
+.brand-mark-bg {
+  fill: #182331;
+  transition: fill .2s;
 }
 
-.brand:hover .brand-mark {
-  background: var(--primary);
+.brand-mark-accent {
+  fill: #6f9bff;
+  transition: fill .2s;
 }
 
-.brand:hover .brand-mark i {
-  background: #fff;
+.brand:hover .brand-mark-bg {
+  fill: var(--primary);
+}
+
+.brand:hover .brand-mark-accent {
+  fill: #fff;
 }
 
 .brand-name {
@@ -1445,8 +1438,6 @@ footer {
 footer .brand-mark {
   width: 34px;
   height: 34px;
-  padding-bottom: 10px;
-  font-size: 15px;
 }
 
 footer>span {
@@ -1809,8 +1800,6 @@ footer>span {
   .brand-mark {
     width: 34px;
     height: 34px;
-    padding-bottom: 10px;
-    font-size: 15px;
   }
   .brand-name {
     font-size: 15px;
