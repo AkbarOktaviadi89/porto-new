@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, ShieldCheck, GraduationCap, Plus, Maximize2, Award, Trophy, Fish, ShoppingCart, ChevronDown, MapPin, Network, Wifi } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { BrandMark } from "@/components/brand-mark";
+import { ThemeToggle } from "./theme-toggle";
 import { projects, experience, domains, certifications, competencies, education, courses, awards, teaching } from "@/lib/portfolio-data";
 export default function Home() {
     const [project, setProject] = useState<number | null>(null);
@@ -183,7 +184,10 @@ export default function Home() {
           {n.name}
         </a>)}
       </nav>
-      <a className="nav-contact" href="#contact" onClick={() => setMenu(false)}>Let’s talk <ArrowRight size={16}/></a>
+      <div className="nav-actions">
+        <ThemeToggle />
+        <a className="nav-contact" href="#contact" onClick={() => setMenu(false)}>Let’s talk <ArrowRight size={16}/></a>
+      </div>
       <button className="mobile-menu icon-button" onClick={() => setMenu(!menu)} aria-expanded={menu} aria-label={menu ? "Close menu" : "Open menu"}>
         {menu ? <X /> : <Menu />}
       </button>

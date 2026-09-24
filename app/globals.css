@@ -247,6 +247,19 @@ p {
   display: none !important;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  width: 44px !important;
+  height: 44px !important;
+  border-color: #c8d3e1;
+  color: #4a5d7a;
+}
+
 .hero {
   position: relative;
   padding: 32px 6% 0;
@@ -2588,9 +2601,16 @@ footer>span {
     color: #576d8c;
     border-color: #c8d5e8;
   }
-  .nav-contact {
+  .nav-actions {
+    gap: 10px;
     margin-left: auto;
-    margin-right: 15px;
+    margin-right: 12px;
+  }
+  .theme-toggle {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .nav-contact {
     font-size: 12px;
     padding: 10px 12px;
     gap: 14px;

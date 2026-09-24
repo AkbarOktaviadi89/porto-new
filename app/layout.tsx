@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { siteDescription, siteTitle, siteUrl } from "@/lib/site";
+import { themeScript } from "./theme-toggle";
 import "./globals.css";
+import "./dark.css";
 const sans = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap" });
 export const metadata: Metadata = {
@@ -43,7 +45,10 @@ const person = {
 export default function RootLayout({ children, }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return (<html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    return (<html lang="en" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }}/>
+      </head>
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}/>
         {children}
