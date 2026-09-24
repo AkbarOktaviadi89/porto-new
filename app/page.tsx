@@ -210,17 +210,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="hero-live">
-          <span className="hero-live-label"><span className="pulse-dot"/>Live in production</span>
-          <ul>
-            {projects.filter(p => p.domain).map(p => <li key={p.domain}>
-              <a href={`https://${p.domain}`} target="_blank" rel="noopener noreferrer">
-                <strong>{p.name}</strong>
-                <ArrowUpRight size={14}/>
-              </a>
-            </li>)}
-          </ul>
-        </div>
       </section>
       <div className="expertise-ribbon" role="region" aria-label="Areas of expertise">
         <div className="ribbon-track">
