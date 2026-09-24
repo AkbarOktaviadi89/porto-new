@@ -522,21 +522,74 @@ p {
 }
 
 .expertise-ribbon {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 23px 6%;
+  position: relative;
+  overflow: hidden;
+  padding: 23px 0;
   background: #edf1f7;
   border-block: 1px solid #e0e6ee;
-  font: 10px var(--font-mono);
+  font: 11px var(--font-mono);
   letter-spacing: .7px;
+  text-transform: uppercase;
   color: #5c6c83;
+}
+
+.expertise-ribbon:before,.expertise-ribbon:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 8%;
+  pointer-events: none;
+}
+
+.expertise-ribbon:before {
+  left: 0;
+  background: linear-gradient(90deg,#edf1f7,#edf1f700);
+}
+
+.expertise-ribbon:after {
+  right: 0;
+  background: linear-gradient(270deg,#edf1f7,#edf1f700);
+}
+
+.ribbon-track {
+  display: flex;
+  width: max-content;
+}
+
+.motion-on .ribbon-track {
+  animation: ribbon 45s linear infinite;
+}
+
+.expertise-ribbon:hover .ribbon-track {
+  animation-play-state: paused;
+}
+
+.expertise-ribbon ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.expertise-ribbon li {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding-right: 48px;
+  white-space: nowrap;
 }
 
 .expertise-ribbon svg {
   width: 12px;
   color: #748aa8;
+}
+
+@keyframes ribbon {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .section {
@@ -1326,7 +1379,7 @@ footer>span {
 .dialog-description {
   font-size: 16px !important;
   line-height: 1.8 !important;
-  color: #7e90aa !important;
+  color: #5a6b82 !important;
 }
 
 .dialog-role {
@@ -1372,6 +1425,66 @@ footer>span {
 
 .project-dialog .primary-button {
   margin-top: 15px;
+}
+
+.dialog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+}
+
+.dialog-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #446ba5;
+}
+
+.dialog-links a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.dialog-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 6px;
+  padding-top: 18px;
+  border-top: 1px solid #dce5f1;
+}
+
+.dialog-pager button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0;
+  color: #314c72;
+  font-size: 14px;
+  text-align: left;
+  transition: color .2s;
+}
+
+.dialog-pager button:last-child {
+  text-align: right;
+}
+
+.dialog-pager button:hover {
+  color: var(--primary);
+}
+
+.dialog-pager span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dialog-pager small {
+  font: 10px var(--font-mono);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: #5c6c83;
 }
 
 .scene-loading {
@@ -1545,9 +1658,6 @@ footer>span {
   .scene-corner {
     font-size: 10px;
   }
-  .expertise-ribbon {
-    font-size: 10px;
-  }
 }
 
 @media (max-width:760px) {
@@ -1683,18 +1793,12 @@ footer>span {
     padding: 6px 7px;
   }
   .expertise-ribbon {
-    justify-content: center;
-    gap: 15px;
-    white-space: nowrap;
-    overflow: hidden;
     font-size: 10px;
-    padding: 19px 4%;
+    padding: 19px 0;
   }
-  .expertise-ribbon>span:last-child,.expertise-ribbon>svg:last-of-type {
-    display: none;
-  }
-  .expertise-ribbon svg {
-    width: 10px;
+  .expertise-ribbon li {
+    gap: 28px;
+    padding-right: 28px;
   }
   .section {
     padding: 65px 6%;

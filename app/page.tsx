@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, ArrowDown, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus } from "lucide-react";
+import { ArrowUpRight, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, Download, Menu, X, Pause, Play, RotateCcw, ShieldCheck, GraduationCap, Plus } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Scene from "./scene";
 import { projects, experience, domains, certifications } from "@/lib/portfolio-data";
@@ -115,14 +115,15 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="expertise-ribbon" aria-label="Areas of expertise">
-        <span>BACKEND DEVELOPMENT</span>
-        <Plus />
-        <span>NETWORK ENGINEERING</span>
-        <Plus />
-        <span>CYBERSECURITY</span>
-        <Plus />
-        <span>LINUX SYSTEM ADMINISTRATION</span>
+      <div className="expertise-ribbon" role="region" aria-label="Areas of expertise">
+        <div className="ribbon-track">
+          {[0, 1].map(copy => <ul key={copy} aria-hidden={copy === 1 ? true : undefined}>
+            {["Backend development", "Network engineering", "Cybersecurity", "Linux system administration", "RESTful APIs", "MikroTik & Cisco"].map(t => <li key={t}>
+              {t}
+              <Plus />
+            </li>)}
+          </ul>)}
+        </div>
       </div>
       <section id="work" className="section works">
         <div className="section-heading">
@@ -136,7 +137,6 @@ export default function Home() {
                 <span>
                   {p.category}
                 </span>
-                <ArrowUpRight />
               </div>
               {i === 0 ? <div className="meta-art">
                 <span className="meta-word">meta<span>tekno</span></span>
@@ -158,7 +158,7 @@ export default function Home() {
                 <span className="security-caption">ASSESS → ANALYZE → MITIGATE</span>
               </div>}
               <span className="project-number">0{i + 1} / PROJECT</span>
-              <span className="project-open">View project <Plus size={16}/></span>
+              <span className="project-open">View details <Plus size={16}/></span>
             </div>
             <div className="project-info">
               <h3>
@@ -404,7 +404,28 @@ export default function Home() {
               {t}
             </span>)}
           </div>
+          {projects[project].links.length > 0 && <div className="dialog-links">
+            {projects[project].links.map(l => <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">
+              {l.label} <ArrowUpRight size={15}/>
+            </a>)}
+          </div>}
           <a href="mailto:akbaroktaviadi89@gmail.com" className="primary-button">Discuss a similar project <ArrowUpRight size={17}/></a>
+          <nav className="dialog-pager" aria-label="Browse projects">
+            <button onClick={() => setProject((project + projects.length - 1) % projects.length)}>
+              <ArrowLeft size={16}/>
+              <span>
+                <small>Previous</small>
+                {projects[(project + projects.length - 1) % projects.length].name}
+              </span>
+            </button>
+            <button onClick={() => setProject((project + 1) % projects.length)}>
+              <span>
+                <small>Next</small>
+                {projects[(project + 1) % projects.length].name}
+              </span>
+              <ArrowRight size={16}/>
+            </button>
+          </nav>
         </>}
       </DialogContent>
     </Dialog>
