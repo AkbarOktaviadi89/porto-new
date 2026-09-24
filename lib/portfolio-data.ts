@@ -1,4 +1,4 @@
-import { Code2, Network, ShieldCheck } from "lucide-react";
+import { Code2, GraduationCap, ShieldCheck } from "lucide-react";
 type ProjectLink = { label: string; href: string };
 type Project = { name: string; category: string; year: string; type: "creator" | "queue" | "inventory" | "learning" | "shop" | "tracker" | "web" | "api" | "security"; domain?: string; desc: string; tags: string[]; role: string; scope: string[]; links: ProjectLink[] };
 // Projects with a domain are live products and are listed first.
@@ -33,33 +33,33 @@ export const projects: Project[] = [
 ];
 export const experience = [
     {
-        date: "NOV 2025 — PRESENT", role: "Teacher", company: "Algorithmics Global", desc: "Teach game development with Roblox Studio, Python fundamentals, and visual programming, helping students develop creativity and problem-solving skills.", tags: ["Roblox Studio", "Python", "Visual programming"]
+        date: "NOV 2025 — PRESENT", role: "Teacher", company: "Algorithmics Global", points: ["Teach game development with Roblox Studio, focusing on game design, creativity, and problem solving.", "Introduce Python fundamentals and visual programming to build coding and computational thinking skills."], tags: ["Roblox Studio", "Python", "Visual programming"]
     },
     {
-        date: "AUG 2025 — PRESENT", role: "Web Developer & System Administrator", company: "PIKO Carwash & Cafe", desc: "Develop business applications, administer servers and deployments, integrate APIs, and manage firewalls, SSL, databases, backups, and disaster recovery.", tags: ["Web applications", "Linux servers", "API integration", "Firewall & SSL", "Backups"]
+        date: "AUG 2025 — PRESENT", role: "Web Developer & System Administrator", company: "PIKO Carwash & Cafe", points: ["Develop, maintain, and optimize web applications that support daily business operations.", "Manage server infrastructure and deployments, and tune system performance.", "Implement security measures including firewalls, SSL, and access control.", "Handle database management, backups, and disaster recovery.", "Monitor system health, troubleshoot issues, and keep services highly available.", "Integrate APIs and external services with the team and maintain technical documentation."], tags: ["Web applications", "Linux servers", "API integration", "Firewall & SSL", "Backups"]
     },
     {
-        date: "DEC 2024 — MAR 2025", role: "IT Support Technician Intern", company: "Diskominfo Pesawaran", desc: "Supported hardware installation and maintenance, troubleshot LAN and internet connectivity, and contributed to website development using Laravel.", tags: ["Hardware support", "LAN troubleshooting", "Laravel"]
+        date: "DEC 2024 — MAR 2025", role: "IT Support Technician Intern", company: "Diskominfo Pesawaran", points: ["Installed, configured, and maintained computers, printers, routers, and switches.", "Troubleshot LAN and internet connectivity to keep office operations running.", "Contributed to developing and maintaining the Diskominfo Pesawaran website with Laravel."], tags: ["Hardware support", "LAN troubleshooting", "Laravel"]
     },
     {
-        date: "JUL 2023 — JAN 2025", role: "Teaching Assistant", company: "Universitas Teknokrat Indonesia", desc: "Supported networking and programming lectures, guided discussions, and helped students understand complex technical concepts.", tags: ["Networking", "Programming"]
+        date: "JUL 2023 — JAN 2025", role: "Teaching Assistant", company: "Universitas Teknokrat Indonesia", points: ["Supported lecturers in delivering networking and programming courses.", "Explained complex topics, guided discussions, and answered student questions.", "Occasionally led teaching sessions to reinforce course objectives."], tags: ["Networking", "Programming"]
     },
     {
-        date: "FEB 2023 — OCT 2024", role: "Network Systems Tutor", company: "Universitas Teknokrat Indonesia", desc: "Delivered practical and theoretical training in computer networking and network security.", tags: ["Computer networking", "Network security"]
+        date: "FEB 2023 — OCT 2024", role: "Network Systems Tutor", company: "Universitas Teknokrat Indonesia", points: ["Delivered theory and hands-on training in computer networking and network security to members."], tags: ["Computer networking", "Network security"]
     },
     {
-        date: "NOV 2019 — MAR 2020", role: "Network Administrator", company: "BLC Pesawaran", desc: "Taught MTCNA topics, installed client Wi-Fi networks, and resolved network and server issues.", tags: ["MikroTik (MTCNA)", "Wi-Fi installation", "Server troubleshooting"]
+        date: "NOV 2019 — MAR 2020", role: "Network Administrator", company: "BLC Pesawaran", points: ["Taught MTCNA (MikroTik Certified Network Associate) material.", "Installed Wi-Fi networks for clients.", "Resolved network and server issues such as errors and dropped connections."], tags: ["MikroTik (MTCNA)", "Wi-Fi installation", "Server troubleshooting"]
     }
 ];
 export const domains = [
     {
-        icon: Code2, title: "Backend", line: "The logic behind the experience.", desc: "Web applications, RESTful APIs, and database integrations designed around real operational needs.", tags: ["Laravel", "Java", "RESTful API", "Python", "Database"]
+        icon: Code2, title: "Web development", line: "From idea to production.", desc: "Web applications, RESTful APIs, and database integrations built around real operational needs, then deployed and maintained in production.", tags: ["Laravel", "Next.js", "Golang", "PostgreSQL", "REST API"]
     },
     {
-        icon: Network, title: "Infrastructure", line: "Connected. Reliable. Ready.", desc: "Linux servers, deployments, backups, routing, and reliable connectivity for everyday operations.", tags: ["Linux", "MikroTik", "Cisco", "Docker", "Networking"]
+        icon: GraduationCap, title: "Mentoring", line: "Making complex ideas clear.", desc: "Teaching programming and computer networking to kids, vocational students, and university students, from first lines of code to hands-on labs.", tags: ["Python", "Roblox Studio", "Networking", "MikroTik"]
     },
     {
-        icon: ShieldCheck, title: "Cybersecurity", line: "Security starts with understanding.", desc: "Vulnerability assessment, threat analysis, and practical remediation to strengthen system security.", tags: ["Penetration testing", "Threat intelligence", "Burp Suite", "OWASP ZAP"]
+        icon: ShieldCheck, title: "Infrastructure & security", line: "Reliable, and secure by default.", desc: "Linux servers, deployments, backups, and firewalls, backed by penetration testing work recognized with a Hall of Fame listing.", tags: ["Linux", "Docker", "Firewall & SSL", "Pentest", "CEH"]
     }
 ];
 export const certifications = [{

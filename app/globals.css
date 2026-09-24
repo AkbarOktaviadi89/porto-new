@@ -1384,7 +1384,7 @@ p {
   border-top: 1px solid var(--border);
 }
 
-.timeline li {
+.timeline>li {
   display: grid;
   grid-template-columns: 210px 1fr;
   gap: 32px;
@@ -1447,6 +1447,34 @@ p {
   color: #586c88;
   font-size: 15px;
   line-height: 1.8;
+}
+
+.experience-points {
+  display: grid;
+  gap: 8px;
+  max-width: 780px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-points li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #586c88;
+}
+
+.experience-points li:before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .68em;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: #9fb7db;
 }
 
 .timeline .tags {
@@ -2541,7 +2569,7 @@ footer>span {
   .tags span {
     font-size: 12px;
   }
-  .timeline li {
+  .timeline>li {
     grid-template-columns: 1fr;
     gap: 8px;
     padding: 24px 0;

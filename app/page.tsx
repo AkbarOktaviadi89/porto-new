@@ -187,7 +187,7 @@ export default function Home() {
             </span>
             <h1>Akbar<br className="name-break"/> <span>Oktaviadi.</span></h1>
             <div className="hero-description">
-              <p className="hero-role">Web Developer and Coding Mentor.<span>I build web applications and the infrastructure that keeps them connected, secure, and reliable.</span></p>
+              <p className="hero-role">Web Developer and Coding Mentor.<span>I build web applications that run in production, and I teach others to code, from first programs to real projects.</span></p>
             </div>
             <div className="hero-actions">
               <a href="#work" className="primary-button">Explore my work <ArrowDown size={18}/></a>
@@ -223,7 +223,7 @@ export default function Home() {
       <div className="expertise-ribbon" role="region" aria-label="Areas of expertise">
         <div className="ribbon-track">
           {[0, 1].map(copy => <ul key={copy} aria-hidden={copy === 1 ? true : undefined}>
-            {["Backend development", "Network engineering", "Cybersecurity", "Linux system administration", "RESTful APIs", "MikroTik & Cisco"].map(t => <li key={t}>
+            {["Web development", "Laravel", "Next.js", "Golang", "Coding mentor", "API integration", "Linux & deployment", "Cybersecurity"].map(t => <li key={t}>
               {t}
               <Plus />
             </li>)}
@@ -275,7 +275,7 @@ export default function Home() {
       <section id="work" className="section works">
         <div className="section-heading">
           <h2>Selected <span>work.</span></h2>
-          <p>Products running in production, plus earlier<br />work in backend systems and security.</p>
+          <p>Web products running in production,<br />plus earlier backend and security work.</p>
         </div>
         <div className="projects projects-live">
           {projects.map((p, i) => p.domain && projectCard(p, i))}
@@ -288,7 +288,7 @@ export default function Home() {
       <section id="journey" className="section journey">
         <div className="section-heading">
           <h2>Professional <span>experience.</span></h2>
-          <p>Hands-on experience across development,<br />infrastructure, and technical education.</p>
+          <p>Building web systems and teaching<br />programming and networking.</p>
         </div>
         <ol className="timeline" id="experience-list">
           {experience.slice(0, showAllExperience ? experience.length : 3).map(e => <li key={e.role}>
@@ -305,9 +305,11 @@ export default function Home() {
               <p className="experience-company">
                 {e.company}
               </p>
-              <p className="experience-desc">
-                {e.desc}
-              </p>
+              <ul className="experience-points">
+                {e.points.map(pt => <li key={pt}>
+                  {pt}
+                </li>)}
+              </ul>
               <div className="tags">
                 {e.tags.map(t => <span key={t}>
                   {t}
@@ -366,7 +368,7 @@ export default function Home() {
       <section id="credentials" className="section credentials">
         <div className="section-heading">
           <h2>Certifications &<br /><span>recognition.</span></h2>
-          <p>Training and certifications in<br />cybersecurity and network engineering.</p>
+          <p>Certifications, competency assessments,<br />and awards along the way.</p>
         </div>
         <div className="cert-grid">
           {certifications.map(c => <article key={c.code}>
