@@ -185,9 +185,9 @@ export default function Home() {
               <span className="pulse-dot"/>
               Currently at PIKO Carwash & Cafe · Algorithmics Global
             </span>
-            <h1>Akbar<br /><span>Oktaviadi.</span></h1>
+            <h1>Akbar<br className="name-break"/> <span>Oktaviadi.</span></h1>
             <div className="hero-description">
-              <p className="hero-role">Web Developer and Coding Mentor.<span>I build web applications and the infrastructure<br className="desktop-break"/> that keeps them connected, secure, and reliable.</span></p>
+              <p className="hero-role">Web Developer and Coding Mentor.<span>I build web applications and the infrastructure that keeps them connected, secure, and reliable.</span></p>
             </div>
             <div className="hero-actions">
               <a href="#work" className="primary-button">Explore my work <ArrowDown size={18}/></a>

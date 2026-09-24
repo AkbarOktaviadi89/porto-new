@@ -268,9 +268,9 @@ p {
 
 .hero-main {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.45fr 1fr;
   align-items: center;
-  gap: 48px;
+  gap: 56px;
   padding: 48px 0 56px;
 }
 
@@ -279,10 +279,15 @@ p {
 }
 
 .hero h1 {
-  font-size: clamp(65px,6.4vw,105px);
+  font-size: clamp(52px,5.5vw,96px);
+  white-space: nowrap;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -.065em;
+}
+
+.name-break {
+  display: none;
 }
 
 .hero h1>span {
@@ -301,7 +306,8 @@ p {
 }
 
 .hero-description .hero-role>span {
-  font-size: 15px;
+  max-width: 560px;
+  font-size: 16px;
   line-height: 1.8;
   color: #606c7d;
   display: block;
@@ -382,7 +388,7 @@ p {
   align-items: flex-end;
   justify-content: space-between;
   gap: 18px 32px;
-  max-width: 560px;
+  max-width: 680px;
   margin-top: 44px;
   padding-top: 24px;
   border-top: 1px solid var(--border);
@@ -436,7 +442,7 @@ p {
 .hero-portrait {
   position: relative;
   justify-self: end;
-  width: min(100%,540px);
+  width: min(100%,430px);
   margin: 8px 0 30px;
 }
 
@@ -2222,9 +2228,6 @@ footer>span {
   .hero-description .hero-role {
     font-size: 18px;
   }
-  .desktop-break {
-    display: none;
-  }
   .projects {
     gap: 18px;
   }
@@ -2376,7 +2379,11 @@ footer>span {
   .hero-copy {
     padding: 15px 0 0;
   }
+  .name-break {
+    display: inline;
+  }
   .hero h1 {
+    white-space: normal;
     font-size: clamp(64px,12vw,88px);
   }
   .hero-description {
