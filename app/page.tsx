@@ -59,53 +59,82 @@ export default function Home() {
             window.location.href = "mailto:akbaroktaviadi89@gmail.com";
         }
     }
-    const projectCard = (p: (typeof projects)[number], i: number) => <button key={p.name} className={`project-card ${p.type === "live" ? "is-live" : ""}`} onClick={() => setProject(i)}>
+    const projectCard = (p: (typeof projects)[number], i: number) => <button key={p.name} className={`project-card ${p.domain ? "is-live" : ""}`} onClick={() => setProject(i)}>
       <div className={`project-art art-${p.type}`}>
-        {p.type === "live" ? <div className="live-art">
-          <div className="browser-bar">
-            <span className="browser-dots"><i /><i /><i /></span>
-            <span className="browser-url">{p.domain}</span>
+        <div className="art-top">
+          <span>
+            {p.category}
+          </span>
+          {p.domain && <span className="art-domain">{p.domain}</span>}
+        </div>
+        {p.type === "creator" ? <div className="creator-art">
+          <span className="creator-word">jeon<span>.id</span></span>
+          <div className="creator-links">
+            <span>Links</span>
+            <span>Shop <b>Rp</b></span>
+            <span>Analytics <b>+1.2k</b></span>
           </div>
-          <Image src={p.image!} alt={`Screenshot of ${p.name}`} width={1200} height={750} sizes="(max-width: 760px) 90vw, 45vw"/>
-        </div> : <>
-          <div className="art-top">
-            <span>
-              {p.category}
-            </span>
+          <div className="art-caption">ONE LINK · SHARE · SELL · GROW</div>
+        </div> : p.type === "queue" ? <div className="queue-art">
+          <div className="queue-ticket">
+            <span>NOW SERVING</span>
+            <strong>A-012</strong>
+            <span>Car wash · Bay 2</span>
           </div>
-          {p.type === "web" ? <div className="meta-art">
-            <span className="meta-word">meta<span>tekno</span></span>
-            <div className="meta-coordinate">THREE.JS EXPERIENCE / LARAVEL CMS</div>
-            <div className="meta-caption">EXPLORE ANOTHER DIMENSION</div>
-          </div> : p.type === "api" ? <div className="api-art">
-            <span className="code-line"><b>JAVA</b> RESTful architecture</span>
-            <div className="api-flow">
-              <span>USER</span>
-              <ArrowRight size={20}/>
-              <span className="api-core">bytecode<span>REST API</span></span>
-              <ArrowRight size={20}/>
-              <span>DATA</span>
-            </div>
-            <div className="code-response">Learners <span>· Courses · Progress</span></div>
-          </div> : <div className="security-art">
-            <ShieldCheck size={92} strokeWidth={.7}/>
-            <span className="security-title">Trust, verified.</span>
-            <span className="security-caption">ASSESS → ANALYZE → MITIGATE</span>
-          </div>}
-          <span className="project-number">{String(i + 1).padStart(2, "0")} / PROJECT</span>
-          <span className="project-open">View details <Plus size={16}/></span>
-        </>}
+          <div className="queue-next">
+            <span>A-013</span>
+            <span>A-014</span>
+            <span>A-015</span>
+          </div>
+          <div className="art-caption">REGISTER → QUEUE → WASH</div>
+        </div> : p.type === "inventory" ? <div className="inventory-art">
+          <span className="inventory-word">Stok<span>App</span></span>
+          <div className="inventory-bars" aria-hidden="true">
+            {[62, 88, 45, 74, 96, 58].map((h, k) => <i key={k} style={{ height: `${h}%` }}/>)}
+          </div>
+          <div className="art-caption">STOCK · PRODUCTION · PWA</div>
+        </div> : p.type === "learning" ? <div className="learning-art">
+          <span className="learning-word">noodu</span>
+          <div className="learning-path">
+            <span>Project</span>
+            <ArrowRight size={16}/>
+            <span>Mentor</span>
+            <ArrowRight size={16}/>
+            <span className="is-done"><Check size={13}/>Certificate</span>
+          </div>
+          <div className="art-caption">LEARN BY BUILDING REAL PROJECTS</div>
+        </div> : p.type === "web" ? <div className="meta-art">
+          <span className="meta-word">meta<span>tekno</span></span>
+          <div className="meta-coordinate">THREE.JS EXPERIENCE / LARAVEL CMS</div>
+          <div className="meta-caption">EXPLORE ANOTHER DIMENSION</div>
+        </div> : p.type === "api" ? <div className="api-art">
+          <span className="code-line"><b>JAVA</b> RESTful architecture</span>
+          <div className="api-flow">
+            <span>USER</span>
+            <ArrowRight size={20}/>
+            <span className="api-core">bytecode<span>REST API</span></span>
+            <ArrowRight size={20}/>
+            <span>DATA</span>
+          </div>
+          <div className="code-response">Learners <span>· Courses · Progress</span></div>
+        </div> : <div className="security-art">
+          <ShieldCheck size={92} strokeWidth={.7}/>
+          <span className="security-title">Trust, verified.</span>
+          <span className="security-caption">ASSESS → ANALYZE → MITIGATE</span>
+        </div>}
+        <span className="project-number">{String(i + 1).padStart(2, "0")} / PROJECT</span>
+        <span className="project-open">View details <Plus size={16}/></span>
       </div>
       <div className="project-info">
         <h3>
           {p.name}
-          {p.type === "live" && <span className="live-badge">Live</span>}
+          {p.domain && <span className="live-badge">Live</span>}
         </h3>
         <span>
           {p.year}
         </span>
       </div>
-      {p.type === "live" && <p className="project-desc">
+      {p.domain && <p className="project-desc">
         {p.desc}
       </p>}
       <p className="project-sub">
@@ -189,11 +218,11 @@ export default function Home() {
           <p>Products running in production, plus earlier<br />work in backend systems and security.</p>
         </div>
         <div className="projects projects-live">
-          {projects.map((p, i) => p.type === "live" && projectCard(p, i))}
+          {projects.map((p, i) => p.domain && projectCard(p, i))}
         </div>
         <h3 className="projects-subheading">Earlier projects</h3>
         <div className="projects">
-          {projects.map((p, i) => p.type !== "live" && projectCard(p, i))}
+          {projects.map((p, i) => !p.domain && projectCard(p, i))}
         </div>
       </section>
       <section id="about" className="section about">
@@ -430,7 +459,6 @@ export default function Home() {
         }}>
       <DialogContent className="project-dialog">
         {project !== null && <>
-          {projects[project].image && <Image className="dialog-shot" src={projects[project].image!} alt={`Screenshot of ${projects[project].name}`} width={1200} height={750} sizes="650px"/>}
           <span className="dialog-meta">{projects[project].category} / {projects[project].year}</span>
           <DialogTitle className="dialog-title">
             {projects[project].name}

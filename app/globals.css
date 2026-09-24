@@ -676,64 +676,207 @@ p {
 }
 
 .project-card.is-live .project-art {
-  height: auto;
-  aspect-ratio: 16/10.6;
-  background: #e9edf4;
+  height: 320px;
 }
 
-.live-art {
+.art-domain {
+  font: 10px var(--font-mono);
+  color: #5c6c83;
+}
+
+.art-caption {
+  font: 10px var(--font-mono);
+  letter-spacing: 1px;
+  color: #5b6c84;
+  margin-top: 20px;
+}
+
+.creator-art,.queue-art,.inventory-art,.learning-art {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-}
-
-.browser-bar {
-  display: flex;
   align-items: center;
-  gap: 14px;
-  height: 34px;
-  padding: 0 14px;
-  background: #fff;
-  border-bottom: 1px solid #dce3eb;
+  justify-content: center;
 }
 
-.browser-dots {
-  display: flex;
-  gap: 6px;
+.art-creator {
+  background: #edecf7;
+  color: #574c9e;
 }
 
-.browser-dots i {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #d5dde8;
+.creator-word {
+  font-size: clamp(32px,3.6vw,52px);
+  font-weight: 600;
+  letter-spacing: -.06em;
+  line-height: 1;
+  color: #2b2556;
 }
 
-.browser-url {
-  flex: 1;
-  max-width: 280px;
-  margin: 0 auto;
-  padding: 4px 12px;
-  border-radius: 99px;
-  background: #f1f4f8;
-  font: 11px var(--font-mono);
-  color: #5c6c83;
-  text-align: center;
+.creator-word>span {
+  color: #6c5fc7;
 }
 
-.live-art img {
-  display: block;
-  width: 100%;
-  flex: 1;
-  min-height: 0;
-  object-fit: cover;
-  object-position: top;
+.creator-links {
+  display: grid;
+  gap: 7px;
+  width: min(230px,60%);
+  margin-top: 20px;
+  transform: rotate(-3deg);
   transition: transform .5s;
 }
 
-.project-card.is-live:hover .live-art img {
-  transform: scale(1.02);
+.project-card:hover .creator-links {
+  transform: rotate(0);
+}
+
+.creator-links>span {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 14px;
+  border: 1px solid #d6d1f1;
+  border-radius: 99px;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  color: #3d3480;
+  box-shadow: 0 4px 10px #4b3fa012;
+}
+
+.creator-links b {
+  font: 500 10px var(--font-mono);
+  color: #6c5fc7;
+}
+
+.art-queue {
+  background: #e8eff3;
+  color: #45687c;
+}
+
+.queue-ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 30px;
+  border: 1px solid #c9d9e3;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 18px #2d506412;
+}
+
+.queue-ticket>span {
+  font: 10px var(--font-mono);
+  letter-spacing: 1px;
+  color: #587489;
+}
+
+.queue-ticket>span:last-child {
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+  font-size: 11px;
+}
+
+.queue-ticket strong {
+  font-size: clamp(34px,3.8vw,50px);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1;
+  color: #1f4a63;
+}
+
+.queue-next {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.queue-next>span {
+  padding: 5px 10px;
+  border: 1px dashed #afc6d4;
+  border-radius: 5px;
+  font: 10px var(--font-mono);
+  color: #4e6d82;
+}
+
+.art-inventory {
+  background: #e9f1ed;
+  color: #3f6b58;
+}
+
+.inventory-word {
+  font-size: clamp(30px,3.4vw,48px);
+  font-weight: 600;
+  letter-spacing: -.06em;
+  line-height: 1;
+  color: #1f4a39;
+}
+
+.inventory-word>span {
+  color: #4f8a6f;
+}
+
+.inventory-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+  height: 78px;
+  margin-top: 20px;
+  padding: 0 14px 0;
+  border-bottom: 1px solid #b7d1c3;
+}
+
+.inventory-bars i {
+  width: 18px;
+  border-radius: 4px 4px 0 0;
+  background: #8fbba5;
+  transition: height .5s;
+}
+
+.inventory-bars i:nth-child(5) {
+  background: #2f7a58;
+}
+
+.art-learning {
+  background: #ebeff8;
+  color: #3f5c8f;
+}
+
+.learning-word {
+  font-size: clamp(32px,3.6vw,52px);
+  font-weight: 600;
+  letter-spacing: -.06em;
+  line-height: 1;
+  color: #1c3f86;
+}
+
+.learning-path {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.learning-path>span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 11px;
+  border: 1px solid #cad6ee;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 12px;
+  color: #34528a;
+}
+
+.learning-path>span.is-done {
+  border-color: #bfe3cf;
+  background: #ecf8f1;
+  color: #1d7a4c;
+}
+
+.learning-path>svg {
+  color: #7f97c4;
 }
 
 .project-info h3 {
@@ -772,14 +915,6 @@ p {
   color: #586c88;
 }
 
-.dialog-shot {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: 6px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-}
 
 .project-art {
   height: 290px;
