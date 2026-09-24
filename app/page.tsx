@@ -430,6 +430,7 @@ export default function Home() {
             <Trophy size={22} strokeWidth={1.5}/>
             <h3>MikroTik–APJII Network Olympiad 2020 Winner</h3>
             <p>Indonesian Internet Service Providers Association</p>
+            <a className="credential-link" href="https://drive.google.com/file/d/1IDdxrQFidaUtVKRNf5_lOA_zeAA3Wh1h/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate <ArrowUpRight size={14}/></a>
           </div>
         </div>
       </section>
