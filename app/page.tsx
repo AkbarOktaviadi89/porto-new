@@ -5,7 +5,6 @@ import { ArrowUpRight, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Copy, Check, D
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { BrandMark } from "@/components/brand-mark";
 import { projects, experience, domains, certifications, competencies, education, courses, awards } from "@/lib/portfolio-data";
-const yearsSince = (year: number, monthIndex: number) => Math.floor((Date.now() - new Date(year, monthIndex).getTime()) / (365.25 * 24 * 3600 * 1000));
 export default function Home() {
     const [project, setProject] = useState<number | null>(null);
     const [showAllExperience, setShowAllExperience] = useState(false);
@@ -234,7 +233,7 @@ export default function Home() {
                 <span>GPA · Bachelor of Informatics</span>
               </div>
               <div>
-                <strong>{yearsSince(2023, 1)}+<span> yrs</span></strong>
+                <strong>2+<span> yrs</span></strong>
                 <span>Teaching programming and computer networking</span>
               </div>
             </div>
